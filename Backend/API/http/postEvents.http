@@ -1,0 +1,78 @@
+# Post single event
+      
+# POST http://localhost:3000/Events    
+# Content-Type: application/json
+
+# {
+#     "eventUrl": "https://rdtickets.uy/evento/EL-PLAN-DE-LA-MARIPOSA/223/",
+#     "name": "Los nota loko",
+#     "imageUrl": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.four-paws.org%2Four-stories%2Fpublications-guides%2F10-tips-to-recognise-a-responsible-puppy-seller&psig=AOvVaw2raxKOBLbRJAi80hWnZVAB&ust=1716847857055000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCMC1pueqrIYDFQAAAAAdAAAAABAE",
+#     "location": "Location 1",
+#     "datesRaw": "Primero de enero y mas",
+#     "dates": ["2020-01-01", "2020-01-02"],
+#     "price": "4 mil pesitos",
+#     "categories": "Category 1",
+#     "latitud": "344",
+#     "longitud": "6969"
+# }
+
+# Bulk post events
+POST http://localhost:3000/events/bulk
+Content-Type: application/json
+
+{
+    "events": [
+        {
+            "eventUrl": "https://redtickets.uy/evento/EL-PLAN-DE-LA-MARIPOSA/15283/",
+            "name": "Los nota loko",
+            "description": "El mejor show del uruguay en vivo",
+            "imageUrl": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.four-paws.org%2Four-stories%2Fpublications-guides%2F10-tips-to-recognise-a-responsible-puppy-seller&psig=AOvVaw2raxKOBLbRJAi80hWnZVAB&ust=1716847857055000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCMC1pueqrIYDFQAAAAAdAAAAABAE",
+            "location": "Location 1",
+            "datesRaw": "Primero de enero y mas",
+            "dates": "2020-01-01;2020-01-02",
+            "price": "4 mil pesitos",
+            "categories": "Category 1",
+            "latitud": "344",
+            "longitud": "6969"
+        },
+        {
+            "eventUrl": "https://redtickets.uy/evento/EL-PLAN-DE-LA-MARIPOSA/15283/",
+            "name": "Los nota loko",
+            "description": "El mejor show del uruguay en vivo",
+            "imageUrl": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.four-paws.org%2Four-stories%2Fpublications-guides%2F10-tips-to-recognise-a-responsible-puppy-seller&psig=AOvVaw2raxKOBLbRJAi80hWnZVAB&ust=1716847857055000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCMC1pueqrIYDFQAAAAAdAAAAABAE",
+            "location": "Location 1",
+            "datesRaw": "Primero de enero y mas",
+            "dates": "2020-01-01;2020-01-02",
+            "price": "4 mil pesitos",
+            "categories": "Category 2",
+            "latitud": "344",
+            "longitud": "6969"
+        },
+        {
+            "eventUrl": "https://redtickets.uy/evento/Wos-presenta-descartable/15093",
+            "name": "Penarooool es formidable",
+            "description": "El mejor partido de futbol de la historia",
+            "imageUrl": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.four-paws.org%2Four-stories%2Fpublications-guides%2F10-tips-to-recognise-a-responsible-puppy-seller&psig=AOvVaw2raxKOBLbRJAi80hWnZVAB&ust=1716847857055000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCMC1pueqrIYDFQAAAAAdAAAAABAE",
+            "location": "Location 1",
+            "datesRaw": "Primero de febrero y mas",
+            "dates": "2020-01-03;2020-01-04",
+            "price": "5 mil bidens",
+            "categories": "Category 2",
+            "latitud": "24",
+            "longitud": "434"
+        },
+        {
+            "eventUrl": "https://redtickets.uy/evento/Wos-presenta-descartable/15093",
+            "name": "Penarooool es formidable",
+            "description": "El mejor partido de futbol de la historia",
+            "imageUrl": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.four-paws.org%2Four-stories%2Fpublications-guides%2F10-tips-to-recognise-a-responsible-puppy-seller&psig=AOvVaw2raxKOBLbRJAi80hWnZVAB&ust=1716847857055000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCMC1pueqrIYDFQAAAAAdAAAAABAE",
+            "location": "Location 1",
+            "datesRaw": "Primero de febrero y mas",
+            "dates": "2020-01-03;2020-01-04",
+            "price": "5 mil bidens",
+            "categories": "Category 4",
+            "latitud": "24",
+            "longitud": "434"
+        }
+    ]
+}
