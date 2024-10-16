@@ -26,7 +26,9 @@ public class EventRepository : IEventRepository
         _context.Events.AddRange(events);
         await _context.SaveChangesAsync();
 
-        return 0; // TODO: return the number of inserted events
+        var addedCount = _context.ChangeTracker.Entries<Event>().Count(e => e.State == EntityState.Added);
+
+        return addedCount;
     }
 
     public async Task<List<Event>> GetAsync()
