@@ -1,5 +1,6 @@
 ﻿using Fing.Idatos.CoordinadorEventos.Domain;
 using Fing.Idatos.CoordinadorEventos.Domain.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace Fing.Idatos.CoordinadorEventos.Infrastructure;
 
@@ -22,7 +23,24 @@ public class EventRepository : IEventRepository
 
     public async Task<int> CreateMultipleEvents(List<Event> events)
     {
-        return 0;
+        _context.Events.AddRange(events);
+        await _context.SaveChangesAsync();
+
+        return 0; // TODO: return the number of inserted events
+    }
+
+    public async Task<List<Event>> GetAsync()
+    {
+        var entitys = await _context.Events.ToListAsync();
+
+        return entitys;
+    }
+
+    public async Task<Event> GetAsync(long id)
+    {
+        var entity = await _context.Events.Where(e => e.Id == id).FirstOrDefaultAsync();
+
+        return entity;
     }
 }
 

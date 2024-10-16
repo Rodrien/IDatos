@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="..\buildMultiTargeting\Fing.Idatos.CoordinadorEventos.Api.Host.props" />
-</Project>

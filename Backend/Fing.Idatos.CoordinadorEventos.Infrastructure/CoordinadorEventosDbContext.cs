@@ -7,6 +7,8 @@ namespace Fing.Idatos.CoordinadorEventos.Infrastructure
     {
         public DbSet<Event> Events { get; set; }
 
+        public DbSet<Category> Categories { get; set; }
+
         public CoordinadorEventosDbContext(DbContextOptions<CoordinadorEventosDbContext> options) : base(options)
         {
 
@@ -16,7 +18,13 @@ namespace Fing.Idatos.CoordinadorEventos.Infrastructure
         {
             base.OnModelCreating(modelBuilder);
 
-            // Add your model configuration here
+            modelBuilder.Entity<Event>().HasKey(e => e.Id);
+            modelBuilder.Entity<Event>()
+                .HasMany(e => e.Categories);
+                
+            modelBuilder.Entity<Category>()
+                .ToTable("Categories")
+                .HasKey(c => c.Id);
         }
     }
 }

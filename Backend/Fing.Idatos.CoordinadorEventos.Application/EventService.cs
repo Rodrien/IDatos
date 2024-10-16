@@ -20,14 +20,18 @@ namespace Fing.Idatos.CoordinadorEventos.Application
             return createdEvent;
         }
 
-        public Task<Event> GetEventAsync(int id)
+        public async Task<Event> GetEventAsync(int id)
         {
-            throw new NotImplementedException();
+            var @event = await _eventRepository.GetAsync(id);
+            
+            return @event;
         }
 
-        public Task<List<Event>> GetEventsAsync()
+        public async Task<List<Event>> GetEventsAsync()
         {
-            throw new NotImplementedException();
+            var events = await _eventRepository.GetAsync();
+
+            return events;
         }
     }
 }

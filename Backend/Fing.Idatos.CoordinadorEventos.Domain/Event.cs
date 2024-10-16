@@ -2,28 +2,30 @@
 {
     public class Event
     {
-        string EventUrl { get; set; }
+        public long Id { get; set; }
 
-        string EventName { get; set; }
+        public string EventUrl { get; set; }
 
-        string Description { get;set; }
+        public string EventName { get; set; }
 
-        string Location { get; set; }
+        public string Description { get;set; }
 
-        string ImageUrl { get; set; }
+        public string Location { get; set; }
 
-        string Latitud { get; set; }
+        public string ImageUrl { get; set; }
 
-        string Longitud { get; set; }
+        public string Latitud { get; set; }
 
-        List<DateTime> Dates { get; set; }
+        public string Longitud { get; set; }
 
-        List<string> Categories { get; set; }
+        public List<DateTime> Dates { get; set; }
+
+        public List<Category> Categories { get; set; }
 
         private Event()
         {
             Dates = new List<DateTime>();
-            Categories = new List<string>();
+            Categories = new List<Category>();
         }
 
         public static Event Create()

@@ -16,7 +16,7 @@ namespace Fing.Idatos.CoordinadorEventos.Controllers
             _eventService = eventService;
         }
 
-        [HttpGet]
+        [HttpGet(":id")]
         public async Task<EventDto> Get(int id)
         {
             var entity = await _eventService.GetEventAsync(id);
