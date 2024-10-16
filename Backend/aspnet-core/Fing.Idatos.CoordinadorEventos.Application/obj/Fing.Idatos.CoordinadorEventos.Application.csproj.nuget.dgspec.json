@@ -1,0 +1,184 @@
+{
+  "format": 1,
+  "restore": {
+    "E:\\Enrique Rodriguez\\Documents\\GitRepos\\IDatos\\Backend\\aspnet-core\\Fing.Idatos.CoordinadorEventos.Application\\Fing.Idatos.CoordinadorEventos.Application.csproj": {}
+  },
+  "projects": {
+    "E:\\Enrique Rodriguez\\Documents\\GitRepos\\IDatos\\Backend\\aspnet-core\\Fing.Idatos.CoordinadorEventos.Application.Contracts\\Fing.Idatos.CoordinadorEventos.Application.Contracts.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\Enrique Rodriguez\\Documents\\GitRepos\\IDatos\\Backend\\aspnet-core\\Fing.Idatos.CoordinadorEventos.Application.Contracts\\Fing.Idatos.CoordinadorEventos.Application.Contracts.csproj",
+        "projectName": "Fing.Idatos.CoordinadorEventos.Application.Contracts",
+        "projectPath": "E:\\Enrique Rodriguez\\Documents\\GitRepos\\IDatos\\Backend\\aspnet-core\\Fing.Idatos.CoordinadorEventos.Application.Contracts\\Fing.Idatos.CoordinadorEventos.Application.Contracts.csproj",
+        "packagesPath": "C:\\Users\\Enrique Rodriguez\\.nuget\\packages\\",
+        "outputPath": "E:\\Enrique Rodriguez\\Documents\\GitRepos\\IDatos\\Backend\\aspnet-core\\Fing.Idatos.CoordinadorEventos.Application.Contracts\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Enrique Rodriguez\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "E:\\Enrique Rodriguez\\Documents\\GitRepos\\IDatos\\Backend\\aspnet-core\\Fing.Idatos.CoordinadorEventos.Domain\\Fing.Idatos.CoordinadorEventos.Domain.csproj": {
+                "projectPath": "E:\\Enrique Rodriguez\\Documents\\GitRepos\\IDatos\\Backend\\aspnet-core\\Fing.Idatos.CoordinadorEventos.Domain\\Fing.Idatos.CoordinadorEventos.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "E:\\Enrique Rodriguez\\Documents\\GitRepos\\IDatos\\Backend\\aspnet-core\\Fing.Idatos.CoordinadorEventos.Application\\Fing.Idatos.CoordinadorEventos.Application.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\Enrique Rodriguez\\Documents\\GitRepos\\IDatos\\Backend\\aspnet-core\\Fing.Idatos.CoordinadorEventos.Application\\Fing.Idatos.CoordinadorEventos.Application.csproj",
+        "projectName": "Fing.Idatos.CoordinadorEventos.Application",
+        "projectPath": "E:\\Enrique Rodriguez\\Documents\\GitRepos\\IDatos\\Backend\\aspnet-core\\Fing.Idatos.CoordinadorEventos.Application\\Fing.Idatos.CoordinadorEventos.Application.csproj",
+        "packagesPath": "C:\\Users\\Enrique Rodriguez\\.nuget\\packages\\",
+        "outputPath": "E:\\Enrique Rodriguez\\Documents\\GitRepos\\IDatos\\Backend\\aspnet-core\\Fing.Idatos.CoordinadorEventos.Application\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Enrique Rodriguez\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "E:\\Enrique Rodriguez\\Documents\\GitRepos\\IDatos\\Backend\\aspnet-core\\Fing.Idatos.CoordinadorEventos.Application.Contracts\\Fing.Idatos.CoordinadorEventos.Application.Contracts.csproj": {
+                "projectPath": "E:\\Enrique Rodriguez\\Documents\\GitRepos\\IDatos\\Backend\\aspnet-core\\Fing.Idatos.CoordinadorEventos.Application.Contracts\\Fing.Idatos.CoordinadorEventos.Application.Contracts.csproj"
+              },
+              "E:\\Enrique Rodriguez\\Documents\\GitRepos\\IDatos\\Backend\\aspnet-core\\Fing.Idatos.CoordinadorEventos.Domain\\Fing.Idatos.CoordinadorEventos.Domain.csproj": {
+                "projectPath": "E:\\Enrique Rodriguez\\Documents\\GitRepos\\IDatos\\Backend\\aspnet-core\\Fing.Idatos.CoordinadorEventos.Domain\\Fing.Idatos.CoordinadorEventos.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "E:\\Enrique Rodriguez\\Documents\\GitRepos\\IDatos\\Backend\\aspnet-core\\Fing.Idatos.CoordinadorEventos.Domain\\Fing.Idatos.CoordinadorEventos.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\Enrique Rodriguez\\Documents\\GitRepos\\IDatos\\Backend\\aspnet-core\\Fing.Idatos.CoordinadorEventos.Domain\\Fing.Idatos.CoordinadorEventos.Domain.csproj",
+        "projectName": "Fing.Idatos.CoordinadorEventos.Domain",
+        "projectPath": "E:\\Enrique Rodriguez\\Documents\\GitRepos\\IDatos\\Backend\\aspnet-core\\Fing.Idatos.CoordinadorEventos.Domain\\Fing.Idatos.CoordinadorEventos.Domain.csproj",
+        "packagesPath": "C:\\Users\\Enrique Rodriguez\\.nuget\\packages\\",
+        "outputPath": "E:\\Enrique Rodriguez\\Documents\\GitRepos\\IDatos\\Backend\\aspnet-core\\Fing.Idatos.CoordinadorEventos.Domain\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Enrique Rodriguez\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

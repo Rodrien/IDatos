@@ -1,6 +1,0 @@
-@Fing.Idatos.CoordinadorEventos.Motor_HostAddress = http://localhost:5198
-
-GET {{Fing.Idatos.CoordinadorEventos.Motor_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
