@@ -1,0 +1,12 @@
+E:\Enrique Rodriguez\Documents\GitRepos\IDatos\Backend\Fing.Idatos.CoordinadorEventos.Common\bin\Debug\net8.0\Fing.Idatos.CoordinadorEventos.Common.deps.json
+E:\Enrique Rodriguez\Documents\GitRepos\IDatos\Backend\Fing.Idatos.CoordinadorEventos.Common\bin\Debug\net8.0\Fing.Idatos.CoordinadorEventos.Common.dll
+E:\Enrique Rodriguez\Documents\GitRepos\IDatos\Backend\Fing.Idatos.CoordinadorEventos.Common\bin\Debug\net8.0\Fing.Idatos.CoordinadorEventos.Common.pdb
+E:\Enrique Rodriguez\Documents\GitRepos\IDatos\Backend\Fing.Idatos.CoordinadorEventos.Common\obj\Debug\net8.0\Fing.Idatos.CoordinadorEventos.Common.GeneratedMSBuildEditorConfig.editorconfig
+E:\Enrique Rodriguez\Documents\GitRepos\IDatos\Backend\Fing.Idatos.CoordinadorEventos.Common\obj\Debug\net8.0\Fing.Idatos.CoordinadorEventos.Common.AssemblyInfoInputs.cache
+E:\Enrique Rodriguez\Documents\GitRepos\IDatos\Backend\Fing.Idatos.CoordinadorEventos.Common\obj\Debug\net8.0\Fing.Idatos.CoordinadorEventos.Common.AssemblyInfo.cs
+E:\Enrique Rodriguez\Documents\GitRepos\IDatos\Backend\Fing.Idatos.CoordinadorEventos.Common\obj\Debug\net8.0\Fing.Idatos.CoordinadorEventos.Common.csproj.CoreCompileInputs.cache
+E:\Enrique Rodriguez\Documents\GitRepos\IDatos\Backend\Fing.Idatos.CoordinadorEventos.Common\obj\Debug\net8.0\Fing.Idatos.CoordinadorEventos.Common.sourcelink.json
+E:\Enrique Rodriguez\Documents\GitRepos\IDatos\Backend\Fing.Idatos.CoordinadorEventos.Common\obj\Debug\net8.0\Fing.Idatos.CoordinadorEventos.Common.dll
+E:\Enrique Rodriguez\Documents\GitRepos\IDatos\Backend\Fing.Idatos.CoordinadorEventos.Common\obj\Debug\net8.0\refint\Fing.Idatos.CoordinadorEventos.Common.dll
+E:\Enrique Rodriguez\Documents\GitRepos\IDatos\Backend\Fing.Idatos.CoordinadorEventos.Common\obj\Debug\net8.0\Fing.Idatos.CoordinadorEventos.Common.pdb
+E:\Enrique Rodriguez\Documents\GitRepos\IDatos\Backend\Fing.Idatos.CoordinadorEventos.Common\obj\Debug\net8.0\ref\Fing.Idatos.CoordinadorEventos.Common.dll

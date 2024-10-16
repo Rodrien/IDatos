@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <InvariantGlobalization>true</InvariantGlobalization>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerfileContext>..\Fing.Idatos.CoordinadorEventos</DockerfileContext>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.10" />
+    <PackageReference Include="Npgsql" Version="8.0.5" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.8" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Fing.Idatos.CoordinadorEventos.Api\Fing.Idatos.CoordinadorEventos.Api.csproj" />
+    <ProjectReference Include="..\Fing.Idatos.CoordinadorEventos.Application.Contracts\Fing.Idatos.CoordinadorEventos.Application.Contracts.csproj" />
+    <ProjectReference Include="..\Fing.Idatos.CoordinadorEventos.Application.Mappers\Fing.Idatos.CoordinadorEventos.Application.Mappers.csproj" />
+    <ProjectReference Include="..\Fing.Idatos.CoordinadorEventos.Application\Fing.Idatos.CoordinadorEventos.Application.csproj" />
+    <ProjectReference Include="..\Fing.Idatos.CoordinadorEventos.Infrastructure\Fing.Idatos.CoordinadorEventos.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>
