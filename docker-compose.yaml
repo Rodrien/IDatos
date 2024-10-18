@@ -33,11 +33,21 @@ services:
       - "5432:5432"
     restart: always
     environment:
-      environment:
       POSTGRES_USER: "postgres"
       POSTGRES_PASSWORD: "postgres"
       POSTGRES_DB: "grdedb"
     networks:
       - app-tier
-    # volumes: 
-    #   - db_volume:/var/lib/postgresql/data
+  logging:
+    image: datalust/seq
+    ports:
+      - "8787:80"
+    restart: always
+    environment:
+      ACCEPT_EULA: "Y"
+    networks:
+      - app-tier
+    depends_on:
+      - db
+      - coordinadoreventosapi
+      - coordinadoreventosmotor

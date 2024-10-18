@@ -2,8 +2,27 @@ using Fing.Idatos.CoordinadorEventos.Domain.Interfaces;
 using Fing.Idatos.CoordinadorEventos.Infrastructure;
 using Fing.Idatos.CoordinadorEventos.Motor;
 using Microsoft.EntityFrameworkCore;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
+
+Log.Logger = new LoggerConfiguration()
+    .MinimumLevel.Verbose()
+    .Enrich.FromLogContext()
+    .WriteTo.Console()
+    .WriteTo.OpenTelemetry(config =>
+    {
+        config.ResourceAttributes = new Dictionary<string, object>
+        {
+            { "service.name", "CoordinadorEventosMotor" }
+        };
+
+        config.Endpoint = "http://logging/ingest/otlp";
+        config.Protocol = Serilog.Sinks.OpenTelemetry.OtlpProtocol.HttpProtobuf;
+    })
+    .CreateLogger();
+
+builder.Services.AddSerilog();
 
 // Add services to the container.
 builder.Services.AddScoped<IEventManager, EventManager>();

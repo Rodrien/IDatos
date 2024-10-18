@@ -13,13 +13,20 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fing.Idatos.CoordinadorEven
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fing.Idatos.CoordinadorEventos.Common", "..\Fing.Idatos.CoordinadorEventos.Common\Fing.Idatos.CoordinadorEventos.Common.csproj", "{D4FE34CA-2752-4AC8-9DD8-65862C65112F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fing.Idatos.CoordinadorEventos.Motor", "..\Fing.Idatos.CoordinadorEventos.Motor\Fing.Idatos.CoordinadorEventos.Motor.csproj", "{686670F8-E486-47EA-A1F3-A3A29F34DEFB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fing.Idatos.CoordinadorEventos.Motor", "..\Fing.Idatos.CoordinadorEventos.Motor\Fing.Idatos.CoordinadorEventos.Motor.csproj", "{686670F8-E486-47EA-A1F3-A3A29F34DEFB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fing.Idatos.CoordinadorEventos.Infrastructure", "..\Fing.Idatos.CoordinadorEventos.Infrastructure\Fing.Idatos.CoordinadorEventos.Infrastructure.csproj", "{ABAF327E-8CB7-46C8-B7EA-878ABB87006E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fing.Idatos.CoordinadorEventos.Infrastructure", "..\Fing.Idatos.CoordinadorEventos.Infrastructure\Fing.Idatos.CoordinadorEventos.Infrastructure.csproj", "{ABAF327E-8CB7-46C8-B7EA-878ABB87006E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fing.Idatos.CoordinadorEventos.Application.Mappers", "..\Fing.Idatos.CoordinadorEventos.Application.Mappers\Fing.Idatos.CoordinadorEventos.Application.Mappers.csproj", "{22FED984-9069-4438-AF3A-FB2929E33A42}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fing.Idatos.CoordinadorEventos.Application.Mappers", "..\Fing.Idatos.CoordinadorEventos.Application.Mappers\Fing.Idatos.CoordinadorEventos.Application.Mappers.csproj", "{22FED984-9069-4438-AF3A-FB2929E33A42}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fing.Idatos.CoordinadorEventos.Api", "..\Fing.Idatos.CoordinadorEventos.Api\Fing.Idatos.CoordinadorEventos.Api.csproj", "{9D9826E4-E822-41C3-9C86-8A34C97817BF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fing.Idatos.CoordinadorEventos.Api", "..\Fing.Idatos.CoordinadorEventos.Api\Fing.Idatos.CoordinadorEventos.Api.csproj", "{9D9826E4-E822-41C3-9C86-8A34C97817BF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{BA9926C4-2DE0-48EB-845E-325C875BB927}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\docker-compose.yaml = ..\..\..\docker-compose.yaml
+		..\Dockerfile-Api = ..\Dockerfile-Api
+		..\Dockerfile-Motor = ..\Dockerfile-Motor
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
