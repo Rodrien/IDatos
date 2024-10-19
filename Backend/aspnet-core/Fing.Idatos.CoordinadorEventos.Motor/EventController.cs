@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Fing.Idatos.CoordinadorEventos.Motor
 {
+    [ApiController]
+    [Route("[controller]")]
     public class EventController : CoordinadorEventosController
     {
         private readonly IEventManager _eventManager;
