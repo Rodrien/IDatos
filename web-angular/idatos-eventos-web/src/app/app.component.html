@@ -1,0 +1,15 @@
+<mat-toolbar color="primary" class="mat-elevation-z3" style="height: 3em">
+  <button mat-icon-button aria-label="Menu icon" (click)="toggleMenu()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <h1>{{ title }}</h1>
+</mat-toolbar>
+
+<mat-sidenav-container>
+  <mat-sidenav opened mode="side" opened [style.width]="sideNavWidth()">
+    <app-custom-sidenav [collapsed]="menuCollapsed()" />
+  </mat-sidenav>
+  <mat-sidenav-content class="content" [style.margin-left]="sideNavWidth()">
+    <router-outlet />
+  </mat-sidenav-content>
+</mat-sidenav-container>
