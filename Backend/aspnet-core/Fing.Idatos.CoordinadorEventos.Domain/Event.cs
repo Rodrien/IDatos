@@ -56,5 +56,10 @@
         {
 
         }
+
+        public void AddCategories(List<Category> categories)
+        {
+            Categories = categories;
+        }
     }
 }

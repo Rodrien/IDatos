@@ -27,6 +27,7 @@ builder.Services.AddSerilog();
 // Add services to the container.
 builder.Services.AddScoped<IEventManager, EventManager>();
 builder.Services.AddScoped<IEventRepository, EventRepository>();
+builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 
 builder.Services.AddEntityFrameworkNpgsql().AddDbContext<CoordinadorEventosDbContext>(options => options.UseNpgsql(builder.Configuration.GetConnectionString("CoordinadorEventosConnectionString")));
 

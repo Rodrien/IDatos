@@ -1808,7 +1808,10 @@
           "Microsoft.AspNetCore.Mvc": "2.2.0"
         },
         "runtime": {
-          "Fing.Idatos.CoordinadorEventos.Api.dll": {}
+          "Fing.Idatos.CoordinadorEventos.Api.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "Fing.Idatos.CoordinadorEventos.Application/1.0.0": {
@@ -1817,7 +1820,10 @@
           "Fing.Idatos.CoordinadorEventos.Domain": "1.0.0"
         },
         "runtime": {
-          "Fing.Idatos.CoordinadorEventos.Application.dll": {}
+          "Fing.Idatos.CoordinadorEventos.Application.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "Fing.Idatos.CoordinadorEventos.Application.Contracts/1.0.0": {
@@ -1825,7 +1831,10 @@
           "Fing.Idatos.CoordinadorEventos.Domain": "1.0.0"
         },
         "runtime": {
-          "Fing.Idatos.CoordinadorEventos.Application.Contracts.dll": {}
+          "Fing.Idatos.CoordinadorEventos.Application.Contracts.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "Fing.Idatos.CoordinadorEventos.Application.Mappers/1.0.0": {
@@ -1834,12 +1843,18 @@
           "Fing.Idatos.CoordinadorEventos.Domain": "1.0.0"
         },
         "runtime": {
-          "Fing.Idatos.CoordinadorEventos.Application.Mappers.dll": {}
+          "Fing.Idatos.CoordinadorEventos.Application.Mappers.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "Fing.Idatos.CoordinadorEventos.Domain/1.0.0": {
         "runtime": {
-          "Fing.Idatos.CoordinadorEventos.Domain.dll": {}
+          "Fing.Idatos.CoordinadorEventos.Domain.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "Fing.Idatos.CoordinadorEventos.Infrastructure/1.0.0": {
@@ -1851,7 +1866,10 @@
           "Npgsql.EntityFrameworkCore.PostgreSQL": "8.0.8"
         },
         "runtime": {
-          "Fing.Idatos.CoordinadorEventos.Infrastructure.dll": {}
+          "Fing.Idatos.CoordinadorEventos.Infrastructure.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       }
     }

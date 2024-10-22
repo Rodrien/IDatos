@@ -180,7 +180,10 @@
       },
       "Fing.Idatos.CoordinadorEventos.Domain/1.0.0": {
         "runtime": {
-          "Fing.Idatos.CoordinadorEventos.Domain.dll": {}
+          "Fing.Idatos.CoordinadorEventos.Domain.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       }
     }
