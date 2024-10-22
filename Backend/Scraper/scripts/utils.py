@@ -5,18 +5,18 @@ import re
 
 redtickets_categories_url = {
     'teatro': 'https://redtickets.uy/categoria/6/Teatro',
-    'musica': 'https://redtickets.uy/categoria/3/Música',
-    'fiestas': 'https://redtickets.uy/categoria/9/Fiestas',
-    'deportes': 'https://redtickets.uy/categoria/2/Deportes',
-    'especiales': 'https://redtickets.uy/categoria/7/Especiales',
-    'futbol': 'https://redtickets.uy/categoria/8/Fútbol',
-    'cursos': 'https://redtickets.uy/categoria/4/Cursos',
-    'giras': 'https://redtickets.uy/categoria/12/Giras',
-    'conferencias': 'https://redtickets.uy/categoria/5/Conferencias',
-    'familiares': 'https://redtickets.uy/categoria/1/Familiares',
-    'afiliados': 'https://redtickets.uy/categoria/28/Afiliados',
-    'empresarial': 'https://redtickets.uy/categoria/13/Empresarial',
-    'festivales': 'https://redtickets.uy/categoria/30/Festivales'
+    # 'musica': 'https://redtickets.uy/categoria/3/Música',
+    # 'fiestas': 'https://redtickets.uy/categoria/9/Fiestas',
+    # 'deportes': 'https://redtickets.uy/categoria/2/Deportes',
+    # 'especiales': 'https://redtickets.uy/categoria/7/Especiales',
+    # 'futbol': 'https://redtickets.uy/categoria/8/Fútbol',
+    # 'cursos': 'https://redtickets.uy/categoria/4/Cursos',
+    # 'giras': 'https://redtickets.uy/categoria/12/Giras',
+    # 'conferencias': 'https://redtickets.uy/categoria/5/Conferencias',
+    # 'familiares': 'https://redtickets.uy/categoria/1/Familiares',
+    # 'afiliados': 'https://redtickets.uy/categoria/28/Afiliados',  
+    # 'empresarial': 'https://redtickets.uy/categoria/13/Empresarial',
+    # 'festivales': 'https://redtickets.uy/categoria/30/Festivales'
 }
 
 tickantel_categories_url = {
@@ -92,11 +92,19 @@ def send_events_to_database(events, categories):
     for category in categories:
         listed_events.extend(events[category])
     events = map_events_for_API(listed_events)
+
+    # # save json
+    # with open("jsonGeneradoRedTickets.txt", "w") as text_file:
+    #     # text_file.write("\n".join(events))
+    #     for line in events:
+    #         text_file.write("%s\n" % line)
+
+
     chunked_events = divide_chunks(events, 10)
     for events in chunked_events:
         body = {"events": events}
         json.dumps(body)
-        requests.post("http://localhost:3000/events/bulk", json= body)
+        requests.post("http://localhost:3000/events/bulk", json= body) # todo: change url
 
 def convertir_fecha(fecha_str):
     try:

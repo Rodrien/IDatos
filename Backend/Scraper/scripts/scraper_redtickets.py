@@ -82,7 +82,10 @@ def get_all_dates_for_event(event_url, browser):
 
 
 def scrape_events(category):
-    driver_path = f"{BASE_DIR}/driver/chromedriver-mac-x64/chromedriver"
+    # driver_path = f"{BASE_DIR}/driver/chromedriver-mac-x64/chromedriver"
+    # Cambiar driver dependiendo de la maquina que tengamos
+    driver_path = f"{BASE_DIR}/driver/chromedriver-win64/chromedriver.exe"
+    
     service = Service(executable_path=driver_path)
     options = webdriver.ChromeOptions()
     options.add_argument("--headless=old")  #  Para que el navegador no se muestre
@@ -123,7 +126,11 @@ def scrape_events(category):
                 new_event["location_url"] = location
                 new_event["description"] = description
                 new_event["dates"] = dates
-                # Por el momento solo los imprimimos, habría que guardarlos en una base de datos
+
+                # Agregar precio siguiendo como se hace en `get_event_loc_n_desc`
+                # obtener divs con las clases `id-radio-tile-label label-big` y luego parsear el valor
+                price = get_price(browser_detail)
+
                 results.append(new_event)
             except:
                 print("Ocurrio un error para scrapear el evento" + str(event))
@@ -149,9 +156,15 @@ def main():
     for category in categories:
         total_results[category] = total_results[category].result()
     end = time.time()
+    # comento para probar local nomas
     send_events_to_database(total_results, redtickets_categories_url.keys())
-    print(f"Tiempo total: {end - start}")
+    print(total_results)
+    
+    # # save json
+    # with open("jsonGeneradoRedTickets.txt", "w") as text_file:
+    #     text_file.write(total_results)
 
+    print(f"Tiempo total: {end - start}")
 
 if __name__ == "__main__":
     main()
