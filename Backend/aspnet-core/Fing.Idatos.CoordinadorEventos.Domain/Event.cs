@@ -4,15 +4,17 @@
     {
         public long Id { get; set; }
 
-        public string EventUrl { get; set; }
+        public string Url { get; set; }
 
-        public string EventName { get; set; }
+        public string Name { get; set; }
 
         public string Description { get;set; }
 
-        public string Location { get; set; }
+        public long Price { get; set; }
 
         public string ImageUrl { get; set; }
+
+        public string Location { get; set; }
 
         public string Latitud { get; set; }
 
@@ -22,30 +24,37 @@
 
         public List<Category> Categories { get; set; }
 
-        private Event()
+        public Event() // TODO: Pasar contructor a privado
         {
             Dates = new List<DateTime>();
             Categories = new List<Category>();
         }
 
-        public static Event Create()
+        public static Event Create(string url, string name, string description, long price, string location, string imageUrl, string latitud, string longitud)
         {
-            return new Event();
+            return new Event()
+            {
+                Url = url,
+                Name = name,
+                Description = description,
+                Price = price,
+                Location = location,
+                ImageUrl = imageUrl,
+                Latitud = latitud,
+                Longitud = longitud
+            };
         }
 
-        /*
-         this.eventUrl = eventUrl;
-        this.name = name;
-        this.description = description;
-        this.price = price; // string
-        this.location = location;
-        this.imageUrl = imageUrl;
-        this.datesRaw = datesRaw; // Ex: "23 de noviembre y 3 mas"
-        this.dates = dates; // []
-        this.categories = categories;// string of categorias string con ;
-        this.latitud = latitud;
-        this.longitud = longitud;
-         
-         */
+        public void AddDates(List<DateTime> dates)
+        {
+            dates = dates.Select(d => d.ToUniversalTime()).ToList(); // ojo aca con los utc.
+
+            Dates.AddRange(dates);
+        }
+
+        public void AddCategoriesByName(List<string> categoryNames)
+        {
+
+        }
     }
 }

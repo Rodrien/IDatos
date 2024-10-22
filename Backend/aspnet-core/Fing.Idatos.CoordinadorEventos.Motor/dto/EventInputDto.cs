@@ -1,6 +1,8 @@
-﻿namespace Fing.Idatos.CoordinadorEventos.Application.Contracts
+﻿using Fing.Idatos.CoordinadorEventos.Application.Contracts;
+
+namespace Fing.Idatos.CoordinadorEventos.Motor.dto
 {
-    public class EventDto
+    public class EventInputDto
     {
         public long Id { get; set; }
 
@@ -12,21 +14,23 @@
 
         public long Price { get; set; }
 
-        public string Location { get; set; }
+        public string Moneda { get; set; }
 
         public string ImageUrl { get; set; }
+
+        public string Location { get; set; }
 
         public string Latitud { get; set; }
 
         public string Longitud { get; set; }
 
-        public List<DateTime> Dates { get; set; }
+        public string DatesString { get; set; }
 
-        public List<CategoryDto> Categories { get; set; }
+        public List<string> Dates { get; set; }
+
+        public List<string> Categories { get; set; }
     }
-}
-
-
+} 
 
 /*
  

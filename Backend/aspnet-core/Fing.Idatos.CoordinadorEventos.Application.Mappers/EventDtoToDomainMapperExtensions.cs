@@ -7,7 +7,8 @@ namespace Fing.Idatos.CoordinadorEventos.Application.Mappers
     {
         public static Event MapToEntity(this EventDto eventDto)
         {
-            return Event.Create();
+            return new Event();
+            //return Event.Create();
         }
     }
 }

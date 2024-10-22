@@ -1,9 +1,9 @@
-﻿using Fing.Idatos.CoordinadorEventos.Domain;
+﻿using Fing.Idatos.CoordinadorEventos.Motor.dto;
 
 namespace Fing.Idatos.CoordinadorEventos.Motor
 {
     public interface IEventManager
     {
-        Task<int> CreateEventsInBulk(List<Event> events);
+        Task<int> CreateEventsInBulk(List<EventInputDto> events);
     }
 }
