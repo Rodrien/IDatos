@@ -1,14 +1,15 @@
 ﻿using Fing.Idatos.CoordinadorEventos.Domain;
 using Fing.Idatos.CoordinadorEventos.Domain.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace Fing.Idatos.CoordinadorEventos.Infrastructure
 {
-    public class CategoryRepository : ICategoryRepository
+    public class CategoryRepository : CoordinadorEventosRepository, ICategoryRepository
     {
         private readonly CoordinadorEventosDbContext _context;
 
-        public CategoryRepository(CoordinadorEventosDbContext context)
+        public CategoryRepository(CoordinadorEventosDbContext context, ILogger<CategoryRepository> logger) : base(logger)
         {
             _context = context;
         }
@@ -20,7 +21,7 @@ namespace Fing.Idatos.CoordinadorEventos.Infrastructure
 
         public async Task<Category> GetByName(string name)
         {
-            return await _context.Categories.Where(c => c.Name == name).FirstOrDefaultAsync()!;
+            return await _context.Categories.Where(c => c.Name == name).FirstOrDefaultAsync();
         }
     }
 }

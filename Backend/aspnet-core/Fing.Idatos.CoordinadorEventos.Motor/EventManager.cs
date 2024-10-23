@@ -1,6 +1,7 @@
 ﻿using Fing.Idatos.CoordinadorEventos.Domain;
 using Fing.Idatos.CoordinadorEventos.Domain.Interfaces;
 using Fing.Idatos.CoordinadorEventos.Motor.dto;
+using Newtonsoft.Json;
 
 namespace Fing.Idatos.CoordinadorEventos.Motor
 {
@@ -8,11 +9,15 @@ namespace Fing.Idatos.CoordinadorEventos.Motor
     {
         private readonly IEventRepository _eventRepository;
         private readonly ICategoryRepository _categoryRepository;
+        private readonly ILogger<EventManager> _logger;
 
-        public EventManager(IEventRepository eventRepository, ICategoryRepository categoryRepository)
+        public EventManager(IEventRepository eventRepository, 
+            ICategoryRepository categoryRepository,
+            ILogger<EventManager> logger)
         {
             _eventRepository = eventRepository;
             _categoryRepository = categoryRepository;
+            _logger = logger;
         }
 
         public async Task<int> CreateEventsInBulk(List<EventInputDto> events)
@@ -34,8 +39,6 @@ namespace Fing.Idatos.CoordinadorEventos.Motor
 
             AddUtcDates(newEvent, @event.Dates);
             await AddCategoriesByName(newEvent, @event.Categories);
-
-            // agregar log aca para ver el evento porque ni idea el error que tira
 
             // TODO: Add logic to process events
 
@@ -61,7 +64,13 @@ namespace Fing.Idatos.CoordinadorEventos.Motor
             List<Category> categories = new List<Category>();
             foreach (var name in categoryNames)
             {
+                _logger.LogInformation($"Buscando categoria: {name}");
                 var dbCategory = await _categoryRepository.GetByName(name);
+                if (dbCategory is null)
+                {
+                    dbCategory = await _categoryRepository.GetByName(CategoryType.otros.ToString());
+                }
+
                 categories.Add(dbCategory);
             }
 

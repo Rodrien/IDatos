@@ -23,6 +23,7 @@ namespace Fing.Idatos.CoordinadorEventos.Infrastructure
             modelBuilder.Entity<Event>().HasMany(e => e.Categories);
 
             //modelBuilder.Entity<Category>().Property(c => c.Id).ValueGeneratedOnAddOrUpdate();
+            modelBuilder.Entity<Category>().HasMany(c => c.Events);
             modelBuilder.Entity<Category>()
                 .ToTable("Categories")
                 .HasKey(c => c.Id);
