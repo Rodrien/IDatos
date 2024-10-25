@@ -1,4 +1,5 @@
 using Fing.Idatos.CoordinadorEventos.Domain.Interfaces;
+using Fing.Idatos.CoordinadorEventos.Domain.Services;
 using Fing.Idatos.CoordinadorEventos.Infrastructure;
 using Fing.Idatos.CoordinadorEventos.Motor;
 using Microsoft.EntityFrameworkCore;
@@ -28,6 +29,7 @@ builder.Services.AddSerilog();
 builder.Services.AddScoped<IEventManager, EventManager>();
 builder.Services.AddScoped<IEventRepository, EventRepository>();
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+builder.Services.AddScoped<ICategoryService, CategoryService>();
 
 builder.Services.AddEntityFrameworkNpgsql().AddDbContext<CoordinadorEventosDbContext>(options => options.UseNpgsql(builder.Configuration.GetConnectionString("CoordinadorEventosConnectionString")));
 

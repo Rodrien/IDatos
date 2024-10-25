@@ -1,4 +1,4 @@
-﻿using Fing.Idatos.CoordinadorEventos.Domain;
+﻿using Fing.Idatos.CoordinadorEventos.Domain.Entities;
 
 namespace Fing.Idatos.CoordinadorEventos.Application.Contracts
 {

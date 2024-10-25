@@ -1,4 +1,4 @@
-﻿namespace Fing.Idatos.CoordinadorEventos.Domain
+﻿namespace Fing.Idatos.CoordinadorEventos.Domain.Entities
 {
     public class Category
     {

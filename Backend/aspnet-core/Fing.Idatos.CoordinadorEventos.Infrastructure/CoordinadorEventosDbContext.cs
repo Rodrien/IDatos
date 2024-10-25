@@ -1,4 +1,4 @@
-﻿using Fing.Idatos.CoordinadorEventos.Domain;
+﻿using Fing.Idatos.CoordinadorEventos.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace Fing.Idatos.CoordinadorEventos.Infrastructure

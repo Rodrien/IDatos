@@ -1,4 +1,4 @@
-﻿namespace Fing.Idatos.CoordinadorEventos.Domain
+﻿namespace Fing.Idatos.CoordinadorEventos.Domain.Entities
 {
     public class Event
     {
@@ -8,7 +8,7 @@
 
         public string Name { get; set; }
 
-        public string Description { get;set; }
+        public string Description { get; set; }
 
         public long Price { get; set; }
 

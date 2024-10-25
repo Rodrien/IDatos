@@ -1,4 +1,4 @@
-﻿using Fing.Idatos.CoordinadorEventos.Domain;
+﻿using Fing.Idatos.CoordinadorEventos.Domain.Entities;
 using Fing.Idatos.CoordinadorEventos.Domain.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;

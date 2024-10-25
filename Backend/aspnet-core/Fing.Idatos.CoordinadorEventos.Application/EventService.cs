@@ -1,6 +1,6 @@
 ﻿using Fing.Idatos.CoordinadorEventos.Application.Contracts;
 using Fing.Idatos.CoordinadorEventos.Domain.Interfaces;
-using Fing.Idatos.CoordinadorEventos.Domain;
+using Fing.Idatos.CoordinadorEventos.Domain.Entities;
 
 namespace Fing.Idatos.CoordinadorEventos.Application
 {

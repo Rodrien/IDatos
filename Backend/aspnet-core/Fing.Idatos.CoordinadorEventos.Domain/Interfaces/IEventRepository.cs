@@ -1,4 +1,6 @@
-﻿namespace Fing.Idatos.CoordinadorEventos.Domain.Interfaces
+﻿using Fing.Idatos.CoordinadorEventos.Domain.Entities;
+
+namespace Fing.Idatos.CoordinadorEventos.Domain.Interfaces
 {
     public interface IEventRepository
     {

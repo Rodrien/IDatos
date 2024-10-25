@@ -1,23 +1,26 @@
 ﻿using Fing.Idatos.CoordinadorEventos.Domain;
+using Fing.Idatos.CoordinadorEventos.Domain.Entities;
 using Fing.Idatos.CoordinadorEventos.Domain.Interfaces;
 using Fing.Idatos.CoordinadorEventos.Motor.dto;
-using Newtonsoft.Json;
 
 namespace Fing.Idatos.CoordinadorEventos.Motor
 {
     public class EventManager : IEventManager
     {
+        private readonly ILogger<EventManager> _logger;
         private readonly IEventRepository _eventRepository;
         private readonly ICategoryRepository _categoryRepository;
-        private readonly ILogger<EventManager> _logger;
+        private readonly ICategoryService _categoryService;
 
-        public EventManager(IEventRepository eventRepository, 
+        public EventManager(ILogger<EventManager> logger, 
+            IEventRepository eventRepository, 
             ICategoryRepository categoryRepository,
-            ILogger<EventManager> logger)
+            ICategoryService categoryService)
         {
+            _logger = logger;
             _eventRepository = eventRepository;
             _categoryRepository = categoryRepository;
-            _logger = logger;
+            _categoryService = categoryService;
         }
 
         public async Task<int> CreateEventsInBulk(List<EventInputDto> events)
@@ -40,8 +43,6 @@ namespace Fing.Idatos.CoordinadorEventos.Motor
             AddUtcDates(newEvent, @event.Dates);
             await AddCategoriesByName(newEvent, @event.Categories);
 
-            // TODO: Add logic to process events
-
             return newEvent;
         }
 
@@ -58,11 +59,12 @@ namespace Fing.Idatos.CoordinadorEventos.Motor
         }
 
         // TODO: Move this method to a domain service! 
-        // TODO: Add union of categories
         public async Task AddCategoriesByName(Event @event, List<string> categoryNames)
         {
+            List<string> newCategoryNames = _categoryService.GetUnifiedCategories(categoryNames);
+
             List<Category> categories = new List<Category>();
-            foreach (var name in categoryNames)
+            foreach (var name in newCategoryNames)
             {
                 _logger.LogInformation($"Buscando categoria: {name}");
                 var dbCategory = await _categoryRepository.GetByName(name);
