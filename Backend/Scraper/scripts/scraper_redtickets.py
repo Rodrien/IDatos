@@ -50,7 +50,7 @@ def get_event_loc_n_desc(event_url, browser):
 def get_event_price(event_url, browser):
     browser.get(event_url)
 
-    precios = browser.find_elements(By.XPATH, "//*[contains(@class, 'label-big')]")
+    precios = browser.find_elements(By.XPATH, "//*[contains(@class, 'label-big') and contains(@class, 'id-radio-tile-label')]")
 
     for precio in precios:
         if ("$" in precio.text):
