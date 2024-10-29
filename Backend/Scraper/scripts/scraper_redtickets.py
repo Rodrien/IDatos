@@ -47,6 +47,14 @@ def get_event_loc_n_desc(event_url, browser):
 
     return location, description
 
+def get_event_price(browser):
+    #browser.get(event_url)
+
+    precios = driver.find_elements_by_class_name("id-radio-tile-label label-big")
+
+    print(precios[0].text)
+    return precios[0].text
+
 
 def get_all_dates_for_event(event_url, browser):
     browser.get(event_url)
@@ -129,7 +137,7 @@ def scrape_events(category):
 
                 # Agregar precio siguiendo como se hace en `get_event_loc_n_desc`
                 # obtener divs con las clases `id-radio-tile-label label-big` y luego parsear el valor
-                price = get_price(browser_detail)
+                price = get_event_price(browser_detail)
 
                 results.append(new_event)
             except:
