@@ -12,6 +12,8 @@
 
         public long Price { get; set; }
 
+        public Currency Currency { get; set; }
+
         public string ImageUrl { get; set; }
 
         public string Location { get; set; }
@@ -24,20 +26,37 @@
 
         public List<Category> Categories { get; set; }
 
-        public Event() // TODO: Pasar contructor a privado
+        private Event() // TODO: Pasar contructor a privado
         {
             Dates = new List<DateTime>();
             Categories = new List<Category>();
         }
 
-        public static Event Create(string url, string name, string description, long price, string location, string imageUrl, string latitud, string longitud)
+        public static Event Create(string url, string name, string description, long price, Currency currency, string location, string imageUrl, string latitud, string longitud)
         {
+            if (Currency.UYU == currency)
+            {
+                return new Event()
+                {
+                    Url = url,
+                    Name = name,
+                    Description = description,
+                    Price = price,
+                    Currency = currency,
+                    Location = location,
+                    ImageUrl = imageUrl,
+                    Latitud = latitud,
+                    Longitud = longitud
+                };
+            }
+
             return new Event()
             {
                 Url = url,
                 Name = name,
                 Description = description,
-                Price = price,
+                Price = price * 40, // 1 dolar = 40 pesos
+                Currency = Currency.UYU,
                 Location = location,
                 ImageUrl = imageUrl,
                 Latitud = latitud,
@@ -52,14 +71,14 @@
             Dates.AddRange(dates);
         }
 
-        public void AddCategoriesByName(List<string> categoryNames)
-        {
-
-        }
-
         public void AddCategories(List<Category> categories)
         {
             Categories = categories;
+        }
+
+        public static Event Create(string url, string name, string description, long price, object value, string imageUrl, string location, string latitud, string longitud)
+        {
+            throw new NotImplementedException();
         }
     }
 }

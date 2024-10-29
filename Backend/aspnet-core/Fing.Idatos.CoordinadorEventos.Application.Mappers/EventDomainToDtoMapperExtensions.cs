@@ -14,6 +14,7 @@ namespace Fing.Idatos.CoordinadorEventos.Application.Mappers
                 Url = eventEntity.Url,
                 Description = eventEntity.Description,
                 Price = eventEntity.Price,
+                Currency = eventEntity.Currency.ToSymbol(),
                 ImageUrl = eventEntity.ImageUrl,
                 Location = eventEntity.Location,
                 Latitud = eventEntity.Latitud,

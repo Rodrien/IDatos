@@ -2,6 +2,7 @@
 using Fing.Idatos.CoordinadorEventos.Domain.Entities;
 using Fing.Idatos.CoordinadorEventos.Domain.Interfaces;
 using Fing.Idatos.CoordinadorEventos.Motor.dto;
+using static Fing.Idatos.CoordinadorEventos.Domain.Entities.CurrencyExtensions;
 
 namespace Fing.Idatos.CoordinadorEventos.Motor
 {
@@ -38,8 +39,17 @@ namespace Fing.Idatos.CoordinadorEventos.Motor
 
         private async Task<Event> ProcessEvent(EventInputDto @event)
         {
-            Event newEvent = Event.Create(@event.Url, @event.Name, @event.Description, @event.Price, @event.ImageUrl, @event.Location, @event.Latitud, @event.Longitud);
-
+            Event newEvent = Event.Create(
+                @event.Url, 
+                @event.Name, 
+                @event.Description, 
+                @event.Price,
+                FromString(@event.Currency),
+                @event.ImageUrl, 
+                @event.Location, 
+                @event.Latitud, 
+                @event.Longitud);
+            
             AddUtcDates(newEvent, @event.Dates);
             await AddCategoriesByName(newEvent, @event.Categories);
 
