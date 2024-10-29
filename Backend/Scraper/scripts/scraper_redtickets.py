@@ -50,7 +50,7 @@ def get_event_loc_n_desc(event_url, browser):
 def get_event_price(browser):
     #browser.get(event_url)
 
-    precios = driver.find_elements_by_class_name("id-radio-tile-label label-big")
+    precios = driver.find_elements(By.CSS_SELECTOR, ".id-radio-tile-label.label-big")
 
     print(precios[0].text)
     return precios[0].text
