@@ -95,6 +95,18 @@ def get_event_loc_n_desc(event_url, browser):
 
     return location, description, formatted_dates
 
+
+def get_event_price(event_url, browser):
+    browser.get(event_url)
+
+    precios = browser.find_elements(By.XPATH, "//*[contains(@class, 'col-costo')]")
+
+    for precio in precios:
+        if ("$" in precio.text):
+            print(float(precio.text.replace("$ ", "")))
+            return float(precio.text.replace("$ ", ""))        
+    return 0
+
 def scrape_events(category):
     # driver_path = f"{BASE_DIR}/driver/chromedriver-mac-x64/chromedriver"
     driver_path = f"{BASE_DIR}/driver/chromedriver-win64/chromedriver.exe"
@@ -156,7 +168,7 @@ def scrape_events(category):
 
             # TODO: Agregarle precio del evento haciendo click en el unico <a> que existe en la variable `event`
             # Obtener divs con la clase `col-costo` y luego parsea el valor
-            price = get_price(browser_detail) # tiene que hacerse siguiendo de ejemplo `get_event_loc_n_desc`
+            price = get_event_price(event_url, browser_detail) # tiene que hacerse siguiendo de ejemplo `get_event_loc_n_desc`
 
             results.append(new_event)
         except:
