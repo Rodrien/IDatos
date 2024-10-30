@@ -109,10 +109,10 @@ def send_events_to_database(events, categories):
         body = json.dumps(body)
         print("body sent to database: " + str(body))
         try:
-            requests.post("http://localhost:8088/Event", data= body)
+            response = requests.post("http://localhost:8088/Event", data= body, headers={"Content-Type": "application/json"})
+            print("response from motor: " + str(response))
         except:
             print("Error al enviar los eventos a la base de datos" + str(body))
-            raise Exception()
 
 def convertir_fecha(fecha_str):
     try:
