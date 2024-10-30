@@ -64,17 +64,19 @@ def map_events_for_API(events):
         try: 
             mapped_event = {
                 "name" : event['title'],
-                "eventUrl": event['event_url'],
+                "url": event['event_url'],
                 "description": event['description'],
-                "price": "$100", #TO DO 
+                "price": event['price'],
+                "currency": "UYU",
                 "location": event['location_text'], 
                 "imageUrl": event['img_url'], 
-                "datesRaw": event['dates_raw'],
-                "dates": ";".join(event['dates']) if len(event['dates']) > 0 else '2024-10-10', #TO DO
+                "datesString": event['dates_raw'],
+                "dates": event['dates'],
                 "categories": event['category'],
-                "latitud": latitude, 
-                "longitud": longitude
+                "latitud": str(latitude), 
+                "longitud": str(longitude)
             }
+            print("mapped event:" + str(mapped_event))
             mapped_events.append(mapped_event)
         except: 
             print ("ERROR AL MAPEAR EL EVENTO" + event)
@@ -102,9 +104,15 @@ def send_events_to_database(events, categories):
 
     chunked_events = divide_chunks(events, 10)
     for events in chunked_events:
-        body = {"events": events}
-        json.dumps(body)
-        requests.post("http://localhost:3000/events/bulk", json= body) # todo: change url
+        # body = {"events": events}
+        body = events
+        body = json.dumps(body)
+        print("body sent to database: " + str(body))
+        try:
+            requests.post("http://localhost:8088/Event", data= body)
+        except:
+            print("Error al enviar los eventos a la base de datos" + str(body))
+            raise Exception()
 
 def convertir_fecha(fecha_str):
     try:

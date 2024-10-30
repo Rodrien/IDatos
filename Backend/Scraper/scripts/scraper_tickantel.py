@@ -166,10 +166,10 @@ def scrape_events(category):
             new_event["description"] = description
             new_event["dates"] = dates
 
-            # TODO: Agregarle precio del evento haciendo click en el unico <a> que existe en la variable `event`
-            # Obtener divs con la clase `col-costo` y luego parsea el valor
-            price = get_event_price(event_url, browser_detail) # tiene que hacerse siguiendo de ejemplo `get_event_loc_n_desc`
+            price = get_event_price(event_url, browser_detail) 
+            new_event["price"] = price
 
+            # print("scraped event: " + str(new_event))
             results.append(new_event)
         except:
             print("Ocurrio un error para scrapear el evento" + str(event))
