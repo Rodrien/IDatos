@@ -20,11 +20,11 @@ redtickets_categories_url = {
 }
 
 tickantel_categories_url = {
-    'teatro': 'https://tickantel.com.uy/inicio/buscar_categoria?5&cat_id=1',
+    # 'teatro': 'https://tickantel.com.uy/inicio/buscar_categoria?5&cat_id=1',
     'musica': 'https://tickantel.com.uy/inicio/buscar_categoria?1&cat_id=2',
-    'deportes': 'https://tickantel.com.uy/inicio/buscar_categoria?2&cat_id=6',
-    'danza': 'https://tickantel.com.uy/inicio/buscar_categoria?4&cat_id=10',
-    'otros': 'https://tickantel.com.uy/inicio/buscar_categoria?3&cat_id=7'
+    # 'deportes': 'https://tickantel.com.uy/inicio/buscar_categoria?2&cat_id=6',
+    # 'danza': 'https://tickantel.com.uy/inicio/buscar_categoria?4&cat_id=10',
+    # 'otros': 'https://tickantel.com.uy/inicio/buscar_categoria?3&cat_id=7'
 }
 
 def get_redtickets_category_url(category):
@@ -104,7 +104,6 @@ def send_events_to_database(events, categories):
 
     chunked_events = divide_chunks(events, 10)
     for events in chunked_events:
-        # body = {"events": events}
         body = events
         body = json.dumps(body)
         print("body sent to database: " + str(body))

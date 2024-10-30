@@ -45,8 +45,8 @@ namespace Fing.Idatos.CoordinadorEventos.Motor
                 @event.Description, 
                 @event.Price,
                 FromString(@event.Currency),
-                @event.ImageUrl, 
                 @event.Location, 
+                @event.ImageUrl, 
                 @event.Latitud, 
                 @event.Longitud);
             

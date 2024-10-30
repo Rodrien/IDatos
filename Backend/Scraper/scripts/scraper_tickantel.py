@@ -112,7 +112,7 @@ def scrape_events(category):
     driver_path = f"{BASE_DIR}/driver/chromedriver-win64/chromedriver.exe"
     service = Service(executable_path=driver_path)
     options = webdriver.ChromeOptions()
-    options.add_argument("--headless=old")  #  Para que el navegador no se muestre
+    options.add_argument("--headless")  #  Para que el navegador no se muestre
 
     # Creo el browswe para listing
     browser_listing = webdriver.Chrome(service=service, options=options)
@@ -157,7 +157,7 @@ def scrape_events(category):
                 "dates_raw": get_event_date(event),
                 "img_url": get_event_img(event),
                 "event_url": event_url,
-                "category": category
+                "category": [category]
             }
 
             location, description, dates = get_event_loc_n_desc(event_url, browser_detail)
