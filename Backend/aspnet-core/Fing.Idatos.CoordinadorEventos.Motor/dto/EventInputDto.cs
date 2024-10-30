@@ -10,7 +10,7 @@ namespace Fing.Idatos.CoordinadorEventos.Motor.dto
 
         public string Description { get; set; }
 
-        public long Price { get; set; }
+        public decimal Price { get; set; }
 
         public string Currency { get; set; }
 

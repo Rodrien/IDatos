@@ -10,7 +10,7 @@
 
         public string Description { get; set; }
 
-        public long Price { get; set; }
+        public decimal Price { get; set; }
 
         public Currency Currency { get; set; }
 
@@ -32,7 +32,7 @@
             Categories = new List<Category>();
         }
 
-        public static Event Create(string url, string name, string description, long price, Currency currency, string location, string imageUrl, string latitud, string longitud)
+        public static Event Create(string url, string name, string description, decimal price, Currency currency, string location, string imageUrl, string latitud, string longitud)
         {
             if (Currency.UYU == currency)
             {
@@ -76,7 +76,7 @@
             Categories = categories;
         }
 
-        public static Event Create(string url, string name, string description, long price, object value, string imageUrl, string location, string latitud, string longitud)
+        public static Event Create(string url, string name, string description, decimal price, object value, string imageUrl, string location, string latitud, string longitud)
         {
             throw new NotImplementedException();
         }
