@@ -70,6 +70,7 @@ export class MapComponent implements OnInit {
               <a href="${evento.url}" target="_blank">Details</a>
             </div>
             `;
+          // TODO: modify this, lat y long estan al reves
           L.marker([parseFloat(evento.longitud), parseFloat(evento.latitud)])
             .addTo(this.map!)
             .bindPopup(popupContent);

@@ -2,8 +2,14 @@
 
 <section>
   <form>
-    <input type="text" placeholder="Buscar por nombre" />
-    <button class="primary" type="button">Buscar</button>
+    <input type="text" placeholder="Buscar por nombre" #searchtext />
+    <button
+      class="primary"
+      type="button"
+      (click)="onSearchInput(searchtext.value)"
+    >
+      Buscar asdf
+    </button>
   </form>
 </section>
 
@@ -20,9 +26,15 @@
           }
         </div>
       </div>
-      @if(eventosService.eventDescriptionIsValid(item)) {<p class="listing-item">{{ item.description }}</p>}
-      @if(eventosService.eventLocationIsValid(item)) {<p class="listing-item">{{ item.location }}</p>}
-      @if(item.price) {<p class="listing-item">{{ item.currency }} {{ item.price }}</p>}
+      @if (eventosService.eventDescriptionIsValid(item)) {
+        <p class="listing-item">{{ item.description }}</p>
+      }
+      @if (eventosService.eventLocationIsValid(item)) {
+        <p class="listing-item">{{ item.location }}</p>
+      }
+      @if (item.price) {
+        <p class="listing-item">{{ item.currency }} {{ item.price }}</p>
+      }
       <p class="listing-item">{{ formatDates(item.dates) }}</p>
       <div class="listing-item-footer">
         <!-- <a class="primary" [routerLink]="['/evento', item.id]">Ver Detalles</a> -->

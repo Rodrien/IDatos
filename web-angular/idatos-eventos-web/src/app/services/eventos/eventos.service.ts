@@ -1,16 +1,41 @@
-import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
+import { Inject, Injectable, PLATFORM_ID } from "@angular/core";
+import { HttpClient, HttpParams } from "@angular/common/http";
 import { Evento } from "src/app/models/evento";
 import { map, Observable, of } from "rxjs";
+import { isPlatformBrowser } from "@angular/common";
 
 @Injectable({
   providedIn: "root",
 })
 export class EventosService {
-  constructor(private http: HttpClient) {}
+  // Map of lat,lng to address, using to optimize times
+  private mapLatLngToAddress: Map<{ lat: number; lng: number }, string> =
+    new Map();
 
-  getEventos(): Observable<Evento[]> {
-    return this.http.get<Evento[]>("http://localhost:8080/Event");
+  constructor(
+    private http: HttpClient,
+    @Inject(PLATFORM_ID) private platformId: Object
+  ) {
+    if (isPlatformBrowser(this.platformId)) {
+      const storedMap = localStorage.getItem("mapLatLngToAddress");
+      if (storedMap) {
+        this.mapLatLngToAddress = new Map(JSON.parse(storedMap));
+      }
+    }
+  }
+
+  getEventos(params?: {
+    text: string;
+    category: string;
+  }): Observable<Evento[]> {
+    let httpParams = new HttpParams();
+    if (params) {
+      httpParams = httpParams.append("searchTerm", params.text);
+      httpParams = httpParams.append("categoryName", params.category);
+    }
+    return this.http.get<Evento[]>("http://localhost:8080/Event", {
+      params: httpParams,
+    });
   }
 
   getEventById(id: number): Observable<Evento | undefined> {
@@ -38,38 +63,41 @@ export class EventosService {
   }
 
   eventDescriptionIsValid(event: Evento) {
-    if (event.description.includes("Lo sentimos, TickAntel"))
-      return false;
-
+    if (event.description.includes("Lo sentimos, TickAntel")) return false;
     return true;
   }
 
   eventLocationIsValid(event: Evento) {
-    if (event.location?.includes("Guatemala 1075"))
-      return false;
+    if (event.location?.includes("Guatemala 1075")) return false;
     return true;
   }
 
-  getAddress(
-    lat: number,
-    lng: number
-  ): Promise<string | undefined> {
+  getAddress(lat: number, lng: number): Promise<string | undefined> {
     const url = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}`;
-  
-    return fetch(url)
-      .then((response) => response.json())
-      .then((data) => {
-        if (data && data.display_name) {
-          return data.display_name;
-        } else {
-          console.log("No address found for these coordinates.");
+
+    if (this.mapLatLngToAddress.has({ lat, lng })) {
+      return Promise.resolve(this.mapLatLngToAddress.get({ lat, lng }));
+    } else {
+      return fetch(url)
+        .then((response) => response.json())
+        .then((data) => {
+          if (data && data.display_name) {
+            this.mapLatLngToAddress.set({ lat, lng }, data.display_name);
+            localStorage.setItem(
+              "mapLatLngToAddress",
+              JSON.stringify(Array.from(this.mapLatLngToAddress.entries()))
+            );
+            return data.display_name;
+          } else {
+            console.log("No address found for these coordinates.");
+            return undefined;
+          }
+        })
+        .catch((error) => {
+          console.error("Error fetching address:", error);
           return undefined;
-        }
-      })
-      .catch((error) => {
-        console.error("Error fetching address:", error);
-        return undefined;
-      });
+        });
+    }
   }
 }
 

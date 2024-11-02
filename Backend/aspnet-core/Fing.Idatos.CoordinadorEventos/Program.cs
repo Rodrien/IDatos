@@ -36,7 +36,21 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// Configure CORS to allow any origin
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAllOrigins", builder =>
+    {
+        builder.AllowAnyOrigin()
+               .AllowAnyMethod()
+               .AllowAnyHeader();
+    });
+});
+
 var app = builder.Build();
+
+// Use CORS policy
+app.UseCors("AllowAllOrigins");
 
 app.Services.CreateScope().ServiceProvider.GetRequiredService<CoordinadorEventosDbContext>().Database.EnsureCreated();
 

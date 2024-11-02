@@ -23,7 +23,7 @@ namespace Fing.Idatos.CoordinadorEventos.Application
         public async Task<Event> GetEventAsync(int id)
         {
             var @event = await _eventRepository.GetAsync(id);
-            
+
             return @event;
         }
 
