@@ -10,7 +10,7 @@ export interface Evento {
   description: string;
   price: number;
   currency: string;
-  location: string;
+  location?: string;
   imageUrl: string;
   latitud: string;
   longitud: string;

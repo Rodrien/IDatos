@@ -52,12 +52,9 @@ export class MapComponent implements OnInit {
   }
 
   private loadEventLocations(): void {
-    this.eventosService.getEventosTest().subscribe((eventos: Evento[]) => {
+    this.eventosService.getEventos().subscribe((eventos: Evento[]) => {
       eventos.forEach((evento) => {
         if (evento.latitud && evento.longitud) {
-          L.marker([parseFloat(evento.latitud), parseFloat(evento.longitud)])
-            .addTo(this.map!)
-            .bindPopup(`<b>${evento.name}</b><br>${evento.description}`);
           const popupContent = `
             <div style="font-size: 14px; margin: 0">
               <img src="${evento.imageUrl}" alt="${
@@ -65,15 +62,15 @@ export class MapComponent implements OnInit {
               }" style="width: 100%; height: auto; border-radius: 8px;"/>
               <h6>${evento.name}
               </h6><span style:"margin-left: 16px">${this.formatCategories(evento.categories)}</span>
-              <p style="margin: 4px">${evento.description}</p>
-              <p style="margin: 4px">${evento.location} - Fecha: ${this.formatDates(
+              <p style="margin: 4px">${this.eventosService.eventDescriptionIsValid(evento) ? evento.description : ""}</p>
+              <p style="margin: 4px">${this.eventosService.eventDescriptionIsValid(evento) ? evento.location : ""} - Fecha: ${this.formatDates(
                 evento.dates
               )}</p>
               <p style="margin: 4px">${evento.currency} ${evento.price}</p>
               <a href="${evento.url}" target="_blank">Details</a>
             </div>
             `;
-          L.marker([parseFloat(evento.latitud), parseFloat(evento.longitud)])
+          L.marker([parseFloat(evento.longitud), parseFloat(evento.latitud)])
             .addTo(this.map!)
             .bindPopup(popupContent);
         }

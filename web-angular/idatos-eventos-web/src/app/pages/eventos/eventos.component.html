@@ -20,12 +20,12 @@
           }
         </div>
       </div>
-      <p class="listing-item">{{ item.description }}</p>
-      <p class="listing-item">{{ item.location }}</p>
-      <p class="listing-item">{{ item.currency }} {{ item.price }}</p>
+      @if(eventosService.eventDescriptionIsValid(item)) {<p class="listing-item">{{ item.description }}</p>}
+      @if(eventosService.eventLocationIsValid(item)) {<p class="listing-item">{{ item.location }}</p>}
+      @if(item.price) {<p class="listing-item">{{ item.currency }} {{ item.price }}</p>}
       <p class="listing-item">{{ formatDates(item.dates) }}</p>
       <div class="listing-item-footer">
-        <a class="primary" [routerLink]="['/evento', item.id]">Ver Detalles</a>
+        <!-- <a class="primary" [routerLink]="['/evento', item.id]">Ver Detalles</a> -->
         <a class="secondary" [href]="item.url" target="_blank">
           Ver Sitio Original
         </a>
