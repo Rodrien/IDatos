@@ -8,6 +8,6 @@ namespace Fing.Idatos.CoordinadorEventos.Application.Contracts
 
         Task<Event> GetEventAsync(int id);
 
-        Task<List<Event>> GetEventsAsync();
+        Task<List<Event>> GetEventsAsync(string searchTerm, string categoryName);
     }
 }

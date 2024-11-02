@@ -25,9 +25,9 @@ namespace Fing.Idatos.CoordinadorEventos.Controllers
         }
 
         [HttpGet]
-        public async Task<List<EventDto>> Get()
+        public async Task<List<EventDto>> Get(string searchTerm, string categoryName)
         {
-            var entitys = await _eventService.GetEventsAsync();
+            var entitys = await _eventService.GetEventsAsync(searchTerm, categoryName);
 
             var dtos = entitys.Select(e => e.MapToDto()).ToList();
 

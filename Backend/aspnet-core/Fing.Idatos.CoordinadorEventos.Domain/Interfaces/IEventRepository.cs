@@ -8,7 +8,7 @@ namespace Fing.Idatos.CoordinadorEventos.Domain.Interfaces
 
         Task<int> CreateMultipleEvents(List<Event> events);
 
-        Task<List<Event>> GetAsync();
+        Task<List<Event>> GetAsync(string searchTerm, string categoryName);
 
         Task<Event> GetAsync(long id);
     }

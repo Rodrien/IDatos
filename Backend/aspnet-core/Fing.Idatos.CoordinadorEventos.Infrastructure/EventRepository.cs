@@ -24,7 +24,13 @@ public class EventRepository : CoordinadorEventosRepository, IEventRepository
 
     public async Task<int> CreateMultipleEvents(List<Event> events)
     {
-        _context.Events.AddRange(events);
+        foreach (Event ev in events)
+        {
+            if (_context.Events.Where(e => ev.Name.ToLower() == e.Name.ToLower()).FirstOrDefault() is null)
+            {
+                _context.Events.Add(ev);
+            }
+        }
 
         var addedCount = _context.ChangeTracker.Entries<Event>().Count(e => e.State == EntityState.Added);
 
@@ -33,10 +39,12 @@ public class EventRepository : CoordinadorEventosRepository, IEventRepository
         return addedCount;
     }
 
-    public async Task<List<Event>> GetAsync()
+    public async Task<List<Event>> GetAsync(string searchTerm, string categoryName)
     {
         var entitys = await _context.Events
             .Include(e => e.Categories)
+            .Where(e => string.IsNullOrEmpty(searchTerm) || e.Name.Contains(searchTerm))
+            .Where(e => string.IsNullOrEmpty(categoryName) || e.Categories.Any(c => c.Name == categoryName))
             .ToListAsync();
 
         return entitys;
