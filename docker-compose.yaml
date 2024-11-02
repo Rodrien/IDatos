@@ -2,6 +2,16 @@ networks:
   app-tier:
     driver: bridge
 services:
+  eventosweb:
+    image: fing.idatos.eventos.web
+    ports:
+      - "4200:4200"
+    networks:
+      - app-tier
+    build:
+      context: ./web-angular/idatos-eventos-web
+      dockerfile: Dockerfile-Web
+    restart: on-failure
   coordinadoreventosapi:
     image: fing.idatos.coordinadoreventos.api
     ports:
@@ -51,3 +61,4 @@ services:
       - db
       - coordinadoreventosapi
       - coordinadoreventosmotor
+      - eventosweb
