@@ -55,7 +55,17 @@ export class MapComponent implements OnInit {
     this.eventosService.getEventos().subscribe((eventos: Evento[]) => {
       eventos.forEach((evento) => {
         if (evento.latitud && evento.longitud) {
-          const popupContent = `
+          const popupContent = this.getEventPopUpText(evento);
+          L.marker([parseFloat(evento.longitud), parseFloat(evento.latitud)])
+            .addTo(this.map!)
+            .bindPopup(popupContent);
+        }
+      });
+    });
+  }
+
+  getEventPopUpText(evento: Evento): string {
+    return `
             <div style="font-size: 14px; margin: 0">
               <img src="${evento.imageUrl}" alt="${
                 evento.name
@@ -66,19 +76,13 @@ export class MapComponent implements OnInit {
               <p style="margin: 4px">${this.eventosService.eventDescriptionIsValid(evento) ? evento.location : ""} - Fecha: ${this.formatDates(
                 evento.dates
               )}</p>
-              <p style="margin: 4px">${evento.currency} ${evento.price}</p>
+              @if (evento.price > 0) {
+                <p style="margin: 4px">${evento.currency} ${evento.price}</p>
+              }
               <a href="${evento.url}" target="_blank">Details</a>
             </div>
-            `;
-          // TODO: modify this, lat y long estan al reves
-          L.marker([parseFloat(evento.longitud), parseFloat(evento.latitud)])
-            .addTo(this.map!)
-            .bindPopup(popupContent);
-        }
-      });
-    });
+      `;
   }
-
   formatDates(dates: string[]): string {
     return this.eventosService.formatDates(dates);
   }

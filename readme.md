@@ -49,26 +49,15 @@ python3 scraper_<plataforma>.py
 
 ## Como levantar el sistema con docker
 
-Parados sobre la raiz de nuestro directorio ejecutar el siguiente comando:
-
-Primero que nada debemos tener los paquetes necesarios en la API para que la imagen de docker se genere correctamente.
-Para esto nos paramos con una terminal en el directorio de API y ejecutamos
+Parados sobre la raiz de nuestro directorio donde se encuentra el archivo de `docker-compose` ejecutar el siguiente comando:
 
 ```bash
-npm install
+docker compose up
 ```
 
-Parados sobre la rail de nuestro directorio ejecutar el siguiente comando:
-
-```bash
-docker-compose -f .\docker-compose.yaml up --build
-```
-
-Esto hara que se levante la BD y la API, listos para usar.
-Por defecto la API se mapea a `localhost:3000`.
-
-## Como probar Node API con archivos http
-
-- En VsCode instalar extension de `REST Client`.
-- Entrar a algun archivo .http ubicado en API/http
-- Ejecutar la accion con `Send Request`
+Esto hara que automaticamente se levanten API, Motor, sitio web y BD, listos para utilizar.
+Los mapeos por defecto son:
+- API: `localhost:8080`
+- Motor: `localhost:8088`
+- Web Angular: `localhost:4200`
+- FrontEnd para telemetria y logs (Seq): `localhost:8787`

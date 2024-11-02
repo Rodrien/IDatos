@@ -21,6 +21,8 @@ export class EventosService {
       if (storedMap) {
         this.mapLatLngToAddress = new Map(JSON.parse(storedMap));
       }
+
+      console.log("mapLatLngToAddress", this.mapLatLngToAddress);
     }
   }
 
@@ -30,8 +32,10 @@ export class EventosService {
   }): Observable<Evento[]> {
     let httpParams = new HttpParams();
     if (params) {
-      httpParams = httpParams.append("searchTerm", params.text);
-      httpParams = httpParams.append("categoryName", params.category);
+      if (params.text)
+        httpParams = httpParams.append("searchTerm", params.text);
+      if (params.category)
+        httpParams = httpParams.append("categoryName", params.category);
     }
     return this.http.get<Evento[]>("http://localhost:8080/Event", {
       params: httpParams,
@@ -59,7 +63,8 @@ export class EventosService {
   // }
 
   formatDates(dates: string[]): string {
-    return dates.map((date) => new Date(date).toLocaleDateString()).join(", ");
+    dates = dates.map((date) => new Date(date).toLocaleDateString());
+    return dates.slice(0, 4).join(", ");
   }
 
   eventDescriptionIsValid(event: Evento) {

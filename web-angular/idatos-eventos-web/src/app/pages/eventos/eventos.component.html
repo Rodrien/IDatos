@@ -2,14 +2,34 @@
 
 <section>
   <form>
-    <input type="text" placeholder="Buscar por nombre" #searchtext />
+    <div class="search-container">
+      <input type="text" placeholder="Buscar por nombre" #searchtext />
+      <span
+        class="cancel-icon"
+        (click)="searchtext.value = ''; onSearchInput(searchtext.value)"
+        >&#x2715;</span
+      >
+    </div>
     <button
       class="primary"
       type="button"
       (click)="onSearchInput(searchtext.value)"
     >
-      Buscar asdf
+      Buscar
     </button>
+
+    <mat-form-field class="selectable-categoria">
+      <mat-label>Categoria</mat-label>
+      <mat-select
+        [(value)]="categorySelected"
+        (selectionChange)="onSearchCategory()"
+      >
+        <mat-option>None</mat-option>
+        @for (category of displayCategories; track category) {
+          <mat-option [value]="category">{{ category }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
   </form>
 </section>
 

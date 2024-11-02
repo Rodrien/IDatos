@@ -7,12 +7,32 @@
   justify-content: space-around;
 }
 
+.search-container {
+  position: relative;
+  display: inline-block;
+  width: 40%;
+}
+
+.cancel-icon {
+  position: absolute;
+  right: 38px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 16px;
+  color: #999;
+}
+
+.cancel-icon:hover {
+  color: #333;
+}
+
 input[type="text"] {
   padding: 16px;
   border-radius: 8px;
   margin-right: 4px;
   display: inline-block;
-  width: 40%;
+  width: 90%;
 }
 
 button {
@@ -37,6 +57,10 @@ button {
   .results {
     grid-template-columns: 1fr;
   }
+}
+
+.selectable-categoria {
+  margin-left: 20vw;
 }
 
 /* listing */
