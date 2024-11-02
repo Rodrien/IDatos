@@ -78,7 +78,7 @@ export class EventosComponent implements OnInit {
           );
         } catch (error) {
           console.error("Error fetching address:", error);
-          e.location = "Unknown address";
+          e.location = "";
         }
       }
     }
