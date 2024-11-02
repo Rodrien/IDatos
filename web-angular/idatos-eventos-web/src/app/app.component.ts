@@ -9,6 +9,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterOutlet } from '@angular/router';
 import { CustomSidenavComponent } from './components/custom-sidenav/custom-sidenav.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { EventosService } from './services/eventos/eventos.service';
 
 @Component({
   selector: 'app-root',

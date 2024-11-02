@@ -1,1 +1,28 @@
-<p>NEW eventos works!</p>
+<mat-grid-list cols="1" class="flex center">
+    @for(evento of eventos; track evento) {
+        <mat-card appearance="outlined">
+            <mat-card-title class="flex center font-titulo">{{evento.name}}</mat-card-title>
+            <img style="max-width: 600px" mat-card-image [src]="evento.imageUrl">
+            <mat-card-content>
+                @if(evento.price) {
+                    <div class="flex direction-column">
+                        <label><b>Precio</b>: {{evento.price}}</label>
+                        <label><b>Moneda</b>: {{evento.currency}}</label>
+                    </div>
+                }
+                <div class="flex direction-column">
+                    @if(evento.categories.length > 0) {
+                        <label><b>Categorias</b> {{getNombresCategoriasEvento(evento).join(", ")}} </label>
+                    }
+                    <label><b>Ubicación</b>: {{evento.location}}</label>
+                    @if(evento.dates.length > 0) {
+                        <label><b>Fechas</b>: {{evento.dates.join(", ")}}</label>
+                    }
+                    @if(descripcionEventoIsValid(evento)) {
+                        <label><b>Descripción</b>: {{evento.description}}</label>
+                    }
+                </div>
+            </mat-card-content>
+        </mat-card>
+    }
+</mat-grid-list>
