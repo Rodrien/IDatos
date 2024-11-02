@@ -34,7 +34,7 @@ export class EventosComponent implements OnInit {
   public displayCategories: Set<string> = new Set();
   @ViewChild("searchtext") searchtext!: HTMLInputElement;
 
-  constructor() {}
+  constructor() { }
 
   ngOnInit() {
     this.getEventos();
@@ -90,7 +90,10 @@ export class EventosComponent implements OnInit {
 
   onSearchInput(text: string) {
     console.log("searching for :: ", text);
-    this.getEventos({ text, category: this.categorySelected });
+    const category =
+      this.categorySelected === "None" ? "" : this.categorySelected;
+
+    this.getEventos({ text, category: category });
   }
 
   onSearchCategory() {
