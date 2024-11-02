@@ -32,7 +32,12 @@ namespace Fing.Idatos.CoordinadorEventos.Motor
                 processedEvents.Add(await ProcessEvent(e));
             }
 
-            int createdCount = await _eventRepository.CreateMultipleEvents(processedEvents);
+            List<Event> uniqueEvents = processedEvents
+                .GroupBy(e => e.Name)
+                .Select(g => g.First())
+                .ToList();
+
+            int createdCount = await _eventRepository.CreateMultipleEvents(uniqueEvents);
 
             return createdCount;
         }

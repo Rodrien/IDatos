@@ -24,7 +24,13 @@ public class EventRepository : CoordinadorEventosRepository, IEventRepository
 
     public async Task<int> CreateMultipleEvents(List<Event> events)
     {
-        _context.Events.AddRange(events);
+        foreach (Event ev in events)
+        {
+            if (_context.Events.Where(e => ev.Name.ToLower() == e.Name.ToLower()).FirstOrDefault() is null)
+            {
+                _context.Events.Add(ev);
+            }
+        }
 
         var addedCount = _context.ChangeTracker.Entries<Event>().Count(e => e.State == EntityState.Added);
 
