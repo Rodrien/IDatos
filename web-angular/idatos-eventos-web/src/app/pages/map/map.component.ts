@@ -55,21 +55,7 @@ export class MapComponent implements OnInit {
     this.eventosService.getEventos().subscribe((eventos: Evento[]) => {
       eventos.forEach((evento) => {
         if (evento.latitud && evento.longitud) {
-          const popupContent = `
-            <div style="font-size: 14px; margin: 0">
-              <img src="${evento.imageUrl}" alt="${
-                evento.name
-              }" style="width: 100%; height: auto; border-radius: 8px;"/>
-              <h6>${evento.name}
-              </h6><span style:"margin-left: 16px">${this.formatCategories(evento.categories)}</span>
-              <p style="margin: 4px">${this.eventosService.eventDescriptionIsValid(evento) ? evento.description : ""}</p>
-              <p style="margin: 4px">${this.eventosService.eventDescriptionIsValid(evento) ? evento.location : ""} - Fecha: ${this.formatDates(
-                evento.dates
-              )}</p>
-              <p style="margin: 4px">${evento.currency} ${evento.price}</p>
-              <a href="${evento.url}" target="_blank">Details</a>
-            </div>
-            `;
+          const popupContent = this.getEventPopUpText(evento);
           L.marker([parseFloat(evento.longitud), parseFloat(evento.latitud)])
             .addTo(this.map!)
             .bindPopup(popupContent);
@@ -78,6 +64,38 @@ export class MapComponent implements OnInit {
     });
   }
 
+  getEventPopUpText(evento: Evento): string {
+    if (evento.price === 0) {
+      return `
+            <div style="font-size: 14px; margin: 0">
+              <img src="${evento.imageUrl}" alt="${evento.name
+        }" style="width: 100%; height: auto; border-radius: 8px;"/>
+              <h6>${evento.name}
+              </h6><span style:"margin-left: 16px">${this.formatCategories(evento.categories)}</span>
+              <p style="margin: 4px">${this.eventosService.eventDescriptionIsValid(evento) ? evento.description : ""}</p>
+              <p style="margin: 4px">${this.eventosService.eventDescriptionIsValid(evento) ? evento.location : ""} - Fecha: ${this.formatDates(
+          evento.dates
+        )}</p>
+              <a href="${evento.url}" target="_blank">Details</a>
+            </div>
+            `;
+    }
+
+    return `
+            <div style="font-size: 14px; margin: 0">
+              <img src="${evento.imageUrl}" alt="${evento.name
+      }" style="width: 100%; height: auto; border-radius: 8px;"/>
+              <h6>${evento.name}
+              </h6><span style:"margin-left: 16px">${this.formatCategories(evento.categories)}</span>
+              <p style="margin: 4px">${this.eventosService.eventDescriptionIsValid(evento) ? evento.description : ""}</p>
+              <p style="margin: 4px">${this.eventosService.eventDescriptionIsValid(evento) ? evento.location : ""} - Fecha: ${this.formatDates(
+        evento.dates
+      )}</p>
+              <p style="margin: 4px">${evento.currency} ${evento.price}</p>
+              <a href="${evento.url}" target="_blank">Details</a>
+            </div>
+      `;
+  }
   formatDates(dates: string[]): string {
     return this.eventosService.formatDates(dates);
   }
