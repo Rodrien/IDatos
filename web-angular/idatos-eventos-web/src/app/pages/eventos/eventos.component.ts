@@ -35,9 +35,7 @@ export class EventosComponent {
         this.eventos = eventos;
         console.log("eventos api works ::", eventos);
       },
-      error: (error) => {
-        console.error(error);
-      },
+      error: (err) => console.log("Error al obtener los eventos :: ", err),
     });
   }
 

@@ -95,11 +95,24 @@ def get_event_loc_n_desc(event_url, browser):
 
     return location, description, formatted_dates
 
+
+def get_event_price(event_url, browser):
+    browser.get(event_url)
+
+    precios = browser.find_elements(By.XPATH, "//*[contains(@class, 'col-costo')]")
+
+    for precio in precios:
+        if ("$" in precio.text):
+            print(float(precio.text.replace("$ ", "")))
+            return float(precio.text.replace("$ ", ""))        
+    return 0
+
 def scrape_events(category):
     # driver_path = f"{BASE_DIR}/driver/chromedriver-mac-arm64/chromedriver"
+    driver_path = f"{BASE_DIR}/driver/chromedriver-win64/chromedriver.exe"
     service = Service(executable_path=driver_path)
     options = webdriver.ChromeOptions()
-    options.add_argument("--headless=old")  #  Para que el navegador no se muestre
+    options.add_argument("--headless")  #  Para que el navegador no se muestre
 
     # Creo el browswe para listing
     browser_listing = webdriver.Chrome(service=service, options=options)
@@ -144,7 +157,7 @@ def scrape_events(category):
                 "dates_raw": get_event_date(event),
                 "img_url": get_event_img(event),
                 "event_url": event_url,
-                "category": category
+                "category": [category]
             }
 
             location, description, dates = get_event_loc_n_desc(event_url, browser_detail)
@@ -153,6 +166,10 @@ def scrape_events(category):
             new_event["description"] = description
             new_event["dates"] = dates
 
+            price = get_event_price(event_url, browser_detail) 
+            new_event["price"] = price
+
+            # print("scraped event: " + str(new_event))
             results.append(new_event)
         except:
             print("Ocurrio un error para scrapear el evento" + str(event))

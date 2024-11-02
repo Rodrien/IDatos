@@ -5,26 +5,26 @@ import re
 
 redtickets_categories_url = {
     'teatro': 'https://redtickets.uy/categoria/6/Teatro',
-    'musica': 'https://redtickets.uy/categoria/3/Música',
-    'fiestas': 'https://redtickets.uy/categoria/9/Fiestas',
-    'deportes': 'https://redtickets.uy/categoria/2/Deportes',
-    'especiales': 'https://redtickets.uy/categoria/7/Especiales',
-    'futbol': 'https://redtickets.uy/categoria/8/Fútbol',
-    'cursos': 'https://redtickets.uy/categoria/4/Cursos',
-    'giras': 'https://redtickets.uy/categoria/12/Giras',
-    'conferencias': 'https://redtickets.uy/categoria/5/Conferencias',
-    'familiares': 'https://redtickets.uy/categoria/1/Familiares',
-    'afiliados': 'https://redtickets.uy/categoria/28/Afiliados',
-    'empresarial': 'https://redtickets.uy/categoria/13/Empresarial',
-    'festivales': 'https://redtickets.uy/categoria/30/Festivales'
+    # 'musica': 'https://redtickets.uy/categoria/3/Música',
+    # 'fiestas': 'https://redtickets.uy/categoria/9/Fiestas',
+    # 'deportes': 'https://redtickets.uy/categoria/2/Deportes',
+    # 'especiales': 'https://redtickets.uy/categoria/7/Especiales',
+    # 'futbol': 'https://redtickets.uy/categoria/8/Fútbol',
+    # 'cursos': 'https://redtickets.uy/categoria/4/Cursos',
+    # 'giras': 'https://redtickets.uy/categoria/12/Giras',
+    # 'conferencias': 'https://redtickets.uy/categoria/5/Conferencias',
+    # 'familiares': 'https://redtickets.uy/categoria/1/Familiares',
+    # 'afiliados': 'https://redtickets.uy/categoria/28/Afiliados',  
+    # 'empresarial': 'https://redtickets.uy/categoria/13/Empresarial',
+    # 'festivales': 'https://redtickets.uy/categoria/30/Festivales'
 }
 
 tickantel_categories_url = {
-    'teatro': 'https://tickantel.com.uy/inicio/buscar_categoria?5&cat_id=1',
+    # 'teatro': 'https://tickantel.com.uy/inicio/buscar_categoria?5&cat_id=1',
     'musica': 'https://tickantel.com.uy/inicio/buscar_categoria?1&cat_id=2',
-    'deportes': 'https://tickantel.com.uy/inicio/buscar_categoria?2&cat_id=6',
-    'danza': 'https://tickantel.com.uy/inicio/buscar_categoria?4&cat_id=10',
-    'otros': 'https://tickantel.com.uy/inicio/buscar_categoria?3&cat_id=7'
+    # 'deportes': 'https://tickantel.com.uy/inicio/buscar_categoria?2&cat_id=6',
+    # 'danza': 'https://tickantel.com.uy/inicio/buscar_categoria?4&cat_id=10',
+    # 'otros': 'https://tickantel.com.uy/inicio/buscar_categoria?3&cat_id=7'
 }
 
 def get_redtickets_category_url(category):
@@ -64,17 +64,19 @@ def map_events_for_API(events):
         try: 
             mapped_event = {
                 "name" : event['title'],
-                "eventUrl": event['event_url'],
+                "url": event['event_url'],
                 "description": event['description'],
-                "price": "$100", #TO DO 
+                "price": event['price'],
+                "currency": "UYU",
                 "location": event['location_text'], 
                 "imageUrl": event['img_url'], 
-                "datesRaw": event['dates_raw'],
-                "dates": ";".join(event['dates']) if len(event['dates']) > 0 else '2024-10-10', #TO DO
+                "datesString": event['dates_raw'],
+                "dates": event['dates'],
                 "categories": event['category'],
-                "latitud": latitude, 
-                "longitud": longitude
+                "latitud": str(latitude), 
+                "longitud": str(longitude)
             }
+            print("mapped event:" + str(mapped_event))
             mapped_events.append(mapped_event)
         except: 
             print ("ERROR AL MAPEAR EL EVENTO" + event)
@@ -92,11 +94,24 @@ def send_events_to_database(events, categories):
     for category in categories:
         listed_events.extend(events[category])
     events = map_events_for_API(listed_events)
+
+    # # save json
+    # with open("jsonGeneradoRedTickets.txt", "w") as text_file:
+    #     # text_file.write("\n".join(events))
+    #     for line in events:
+    #         text_file.write("%s\n" % line)
+
+
     chunked_events = divide_chunks(events, 10)
     for events in chunked_events:
-        body = {"events": events}
-        json.dumps(body)
-        requests.post("http://localhost:8088/Event", json= body)
+        body = events
+        body = json.dumps(body)
+        print("body sent to database: " + str(body))
+        try:
+            response = requests.post("http://localhost:8088/Event", data= body, headers={"Content-Type": "application/json"})
+            print("response from motor: " + str(response))
+        except:
+            print("Error al enviar los eventos a la base de datos" + str(body))
 
 def convertir_fecha(fecha_str):
     try:

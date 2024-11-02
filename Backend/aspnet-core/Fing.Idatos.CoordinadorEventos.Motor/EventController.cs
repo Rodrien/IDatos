@@ -1,10 +1,12 @@
 ﻿using Fing.Idatos.CoordinadorEventos.Api;
-using Fing.Idatos.CoordinadorEventos.Application.Contracts;
 using Fing.Idatos.CoordinadorEventos.Application.Mappers;
+using Fing.Idatos.CoordinadorEventos.Motor.dto;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Fing.Idatos.CoordinadorEventos.Motor
 {
+    [ApiController]
+    [Route("[controller]")]
     public class EventController : CoordinadorEventosController
     {
         private readonly IEventManager _eventManager;
@@ -14,13 +16,11 @@ namespace Fing.Idatos.CoordinadorEventos.Motor
         }
 
         [HttpPost(Name = "Post")]
-        public async Task<int> CreateEventsInBulk(List<EventDto> events)
+        public async Task<int> CreateEventsInBulk(List<EventInputDto> events)
         {
-            var eventEntities = events.Select(e => e.MapToEntity()).ToList();
-
             try
             {
-                int insertCount = await _eventManager.CreateEventsInBulk(eventEntities);
+                int insertCount = await _eventManager.CreateEventsInBulk(events);
 
                 return insertCount;
             }

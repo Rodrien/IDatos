@@ -10,6 +10,15 @@ Backend/aspnet-core/*/obj
 Backend/aspnet-core/*/.vs
 Backend/aspnet-core/*/bin
 Backend/aspnet-core/*/obj
+
+Backend/aspnet-core/Fing.Idatos.CoordinadorEventos/bin
+Backend/aspnet-core/Fing.Idatos.CoordinadorEventos.Application/bin
+Backend/aspnet-core/Fing.Idatos.CoordinadorEventos.Application.Contracts/bin
+Backend/aspnet-core/Fing.Idatos.CoordinadorEventos.Application.Mappers/bin
+Backend/aspnet-core/Fing.Idatos.CoordinadorEventos.Domain/bin
+Backend/aspnet-core/Fing.Idatos.CoordinadorEventos.Infrastructure/bin
+Backend/aspnet-core/Fing.Idatos.CoordinadorEventos.Motor/bin
+
 # Ignore node_modules directory
 web-angular/idatos-eventos-web/node_modules
 

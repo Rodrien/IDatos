@@ -1,6 +1,5 @@
-import { BreakpointObserver } from "@angular/cdk/layout";
 import { CommonModule } from "@angular/common";
-import { Component, computed, signal, ViewChild } from "@angular/core";
+import { Component, computed, signal } from "@angular/core";
 import { MatButtonModule } from "@angular/material/button";
 import { MatIconModule } from "@angular/material/icon";
 import { MatSidenavModule } from "@angular/material/sidenav";

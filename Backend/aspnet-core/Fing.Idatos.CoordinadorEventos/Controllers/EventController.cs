@@ -34,14 +34,14 @@ namespace Fing.Idatos.CoordinadorEventos.Controllers
             return dtos;
         }
 
-        [HttpPost]
-        public async Task<EventDto> Post(EventDto eventDto)
-        {
-            var eventEntity = eventDto.MapToEntity();
+        //[HttpPost]
+        //public async Task<EventDto> Post(EventDto eventDto)
+        //{
+        //    var eventEntity = eventDto.MapToEntity();
 
-            var eventCreated = await _eventService.CreateEventAsync(eventEntity);
+        //    var eventCreated = await _eventService.CreateEventAsync(eventEntity);
 
-            return eventCreated.MapToDto();
-        }
+        //    return eventCreated.MapToDto();
+        //}
     }
 }

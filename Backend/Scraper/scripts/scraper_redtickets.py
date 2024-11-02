@@ -45,7 +45,18 @@ def get_event_loc_n_desc(event_url, browser):
     soup = BeautifulSoup(description_html, 'html.parser')
     description = soup.get_text()
 
+    description = description.replace("\xa0", " ")
     return location, description
+
+def get_event_price(event_url, browser):
+    browser.get(event_url)
+
+    precios = browser.find_elements(By.XPATH, "//*[contains(@class, 'label-big') and contains(@class, 'id-radio-tile-label')]")
+
+    for precio in precios:
+        if ("$" in precio.text):
+            return float(precio.text.replace("$ ", ""))        
+    return 0
 
 
 def get_all_dates_for_event(event_url, browser):
@@ -82,10 +93,13 @@ def get_all_dates_for_event(event_url, browser):
 
 
 def scrape_events(category):
-    driver_path = f"{BASE_DIR}/driver/chromedriver-mac-x64/chromedriver"
+    # driver_path = f"{BASE_DIR}/driver/chromedriver-mac-x64/chromedriver"
+    # Cambiar driver dependiendo de la maquina que tengamos
+    driver_path = f"{BASE_DIR}/driver/chromedriver-win64/chromedriver.exe"
+    
     service = Service(executable_path=driver_path)
     options = webdriver.ChromeOptions()
-    options.add_argument("--headless=old")  #  Para que el navegador no se muestre
+    options.add_argument("--headless")  #  Para que el navegador no se muestre
 
     # Creo el browswe para listing
     browser_listing = webdriver.Chrome(service=service, options=options)
@@ -114,7 +128,7 @@ def scrape_events(category):
                     "dates_raw": get_event_date(event),
                     "img_url": get_event_img(event),
                     "event_url": event_url,
-                    "category": category
+                    "category": [category]
                 }
 
                 location, description = get_event_loc_n_desc(event_url, browser_detail)
@@ -123,7 +137,11 @@ def scrape_events(category):
                 new_event["location_url"] = location
                 new_event["description"] = description
                 new_event["dates"] = dates
-                # Por el momento solo los imprimimos, habría que guardarlos en una base de datos
+
+                price = get_event_price(event_url, browser_detail)
+                new_event["price"] = price
+
+                # print("scraped event: " + str(new_event))
                 results.append(new_event)
             except:
                 print("Ocurrio un error para scrapear el evento" + str(event))
@@ -149,9 +167,15 @@ def main():
     for category in categories:
         total_results[category] = total_results[category].result()
     end = time.time()
+    # comento para probar local nomas
     send_events_to_database(total_results, redtickets_categories_url.keys())
-    print(f"Tiempo total: {end - start}")
+    # print(total_results)
+    
+    # save json
+    # with open("jsonGeneradoRedTickets.txt", "w") as text_file:
+    #     text_file.write(total_results)
 
+    print(f"Tiempo total: {end - start}")
 
 if __name__ == "__main__":
     main()
