@@ -95,9 +95,11 @@ export class EventosComponent implements OnInit {
 
   onSearchCategory() {
     console.log("searching for category :: ", this.categorySelected);
+    const category =
+      this.categorySelected === "None" ? "" : this.categorySelected;
     this.getEventos({
       text: this.searchtext.value,
-      category: this.categorySelected,
+      category,
     });
   }
 }
