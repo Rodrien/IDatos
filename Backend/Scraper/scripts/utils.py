@@ -7,7 +7,7 @@ redtickets_categories_url = {
     'teatro': 'https://redtickets.uy/categoria/6/Teatro',
     # 'musica': 'https://redtickets.uy/categoria/3/Música',
     # 'fiestas': 'https://redtickets.uy/categoria/9/Fiestas',
-    # 'deportes': 'https://redtickets.uy/categoria/2/Deportes',
+    'deportes': 'https://redtickets.uy/categoria/2/Deportes',
     # 'especiales': 'https://redtickets.uy/categoria/7/Especiales',
     # 'futbol': 'https://redtickets.uy/categoria/8/Fútbol',
     # 'cursos': 'https://redtickets.uy/categoria/4/Cursos',
@@ -20,9 +20,9 @@ redtickets_categories_url = {
 }
 
 tickantel_categories_url = {
-    # 'teatro': 'https://tickantel.com.uy/inicio/buscar_categoria?5&cat_id=1',
+    'teatro': 'https://tickantel.com.uy/inicio/buscar_categoria?5&cat_id=1',
     'musica': 'https://tickantel.com.uy/inicio/buscar_categoria?1&cat_id=2',
-    # 'deportes': 'https://tickantel.com.uy/inicio/buscar_categoria?2&cat_id=6',
+    'deportes': 'https://tickantel.com.uy/inicio/buscar_categoria?2&cat_id=6',
     # 'danza': 'https://tickantel.com.uy/inicio/buscar_categoria?4&cat_id=10',
     # 'otros': 'https://tickantel.com.uy/inicio/buscar_categoria?3&cat_id=7'
 }

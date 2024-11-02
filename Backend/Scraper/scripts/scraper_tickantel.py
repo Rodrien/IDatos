@@ -108,8 +108,8 @@ def get_event_price(event_url, browser):
     return 0
 
 def scrape_events(category):
-    # driver_path = f"{BASE_DIR}/driver/chromedriver-mac-arm64/chromedriver"
-    driver_path = f"{BASE_DIR}/driver/chromedriver-win64/chromedriver.exe"
+    driver_path = f"{BASE_DIR}/driver/chromedriver-mac-arm64/chromedriver"
+    # driver_path = f"{BASE_DIR}/driver/chromedriver-win64/chromedriver.exe"
     service = Service(executable_path=driver_path)
     options = webdriver.ChromeOptions()
     options.add_argument("--headless")  #  Para que el navegador no se muestre

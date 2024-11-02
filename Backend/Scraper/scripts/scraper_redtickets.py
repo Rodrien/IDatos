@@ -93,9 +93,9 @@ def get_all_dates_for_event(event_url, browser):
 
 
 def scrape_events(category):
-    # driver_path = f"{BASE_DIR}/driver/chromedriver-mac-x64/chromedriver"
+    driver_path = f"{BASE_DIR}/driver/chromedriver-mac-arm64/chromedriver"
     # Cambiar driver dependiendo de la maquina que tengamos
-    driver_path = f"{BASE_DIR}/driver/chromedriver-win64/chromedriver.exe"
+    # driver_path = f"{BASE_DIR}/driver/chromedriver-win64/chromedriver.exe"
     
     service = Service(executable_path=driver_path)
     options = webdriver.ChromeOptions()
