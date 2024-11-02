@@ -96,7 +96,7 @@ def send_events_to_database(events, categories):
     for events in chunked_events:
         body = {"events": events}
         json.dumps(body)
-        requests.post("http://localhost:3000/events/bulk", json= body)
+        requests.post("http://localhost:8088/Event", json= body)
 
 def convertir_fecha(fecha_str):
     try:

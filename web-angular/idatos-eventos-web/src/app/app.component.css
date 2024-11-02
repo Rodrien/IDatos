@@ -10,3 +10,8 @@ mat-toolbar {
 mat-sidenav-container {
   height: calc(100vh - 6em);
 }
+
+mat-sidenav,
+mat-sidenav-content {
+  transition: all 0.3s ease-in-out;
+}

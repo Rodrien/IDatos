@@ -96,7 +96,7 @@ def get_event_loc_n_desc(event_url, browser):
     return location, description, formatted_dates
 
 def scrape_events(category):
-    driver_path = f"{BASE_DIR}/driver/chromedriver-mac-x64/chromedriver"
+    # driver_path = f"{BASE_DIR}/driver/chromedriver-mac-arm64/chromedriver"
     service = Service(executable_path=driver_path)
     options = webdriver.ChromeOptions()
     options.add_argument("--headless=old")  #  Para que el navegador no se muestre
@@ -175,6 +175,7 @@ def main():
     for category in categories:
         total_results[category] = total_results[category].result()
     end = time.time()
+    print(total_results)
     send_events_to_database(total_results, tickantel_categories_url.keys())
     print(f"Tiempo total: {end - start}")
 

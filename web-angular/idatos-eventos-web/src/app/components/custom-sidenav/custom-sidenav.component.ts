@@ -1,8 +1,8 @@
-import { CommonModule } from '@angular/common';
-import { Component, computed, Input, signal } from '@angular/core';
-import { MatIconModule } from '@angular/material/icon';
-import { MatListModule } from '@angular/material/list';
-import { RouterOutlet } from '@angular/router';
+import { CommonModule } from "@angular/common";
+import { Component, computed, Input, signal } from "@angular/core";
+import { MatIconModule } from "@angular/material/icon";
+import { MatListModule } from "@angular/material/list";
+import { RouterModule, RouterOutlet } from "@angular/router";
 
 export type MenuItem = {
   icon: string;
@@ -11,9 +11,15 @@ export type MenuItem = {
 };
 
 @Component({
-  selector: 'app-custom-sidenav',
+  selector: "app-custom-sidenav",
   standalone: true,
-  imports: [CommonModule, MatListModule, MatIconModule, RouterOutlet],
+  imports: [
+    CommonModule,
+    MatListModule,
+    MatIconModule,
+    RouterOutlet,
+    RouterModule,
+  ],
   template: `
     <div class="sidenav-header">
       <img
@@ -22,26 +28,33 @@ export type MenuItem = {
         src="assets/sidenav-img.png"
         alt="logo"
       />
-      @if(!menuCollapsed()) {
-      <div class="header-text">
+      <div class="header-text" [class.hide-header-text]="menuCollapsed()">
         <h2>Eventos</h2>
         <p>IDatos</p>
       </div>
-      }
     </div>
     <mat-nav-list>
       <a
         *ngFor="let item of menuItems()"
         mat-list-item
-        routerLinkActive="active"
+        routerLinkActive="selected-menu-item"
+        #rla="routerLinkActive"
+        [activated]="rla.isActive"
+        [routerLink]="item.route"
       >
         <mat-icon matListItemIcon>{{ item.icon }}</mat-icon>
+        @if (!menuCollapsed()) {
         <span matListItemTitle>{{ item.label }}</span>
+        }
       </a>
     </mat-nav-list>
   `,
   styles: [
     `
+      :host * {
+        transition: all 0.3s ease-in-out;
+      }
+
       .sidenav-header {
         padding-top: 24px;
         text-align: center;
@@ -53,6 +66,7 @@ export type MenuItem = {
       }
 
       .header-text {
+        height: 3em;
         > h2 {
           margin: 0;
           font-size: 1.2rem;
@@ -63,6 +77,15 @@ export type MenuItem = {
           margin: 0;
           font-size: 1rem;
         }
+      }
+
+      .hide-header-text {
+        opacity: 0;
+        height: 0;
+      }
+
+      .selected-menu-item {
+        border-left: 4px solid #3f51b5;
       }
     `,
   ],
@@ -75,9 +98,9 @@ export class CustomSidenavComponent {
   }
 
   menuItems = signal<MenuItem[]>([
-    { icon: 'home', label: 'Inicio', route: '/' },
-    { icon: 'map', label: 'Mapa', route: '/map' },
+    { icon: "home", label: "Inicio", route: "/home" },
+    { icon: "map", label: "Mapa", route: "/map" },
   ]);
 
-  profilePicSize = computed(() => (this.menuCollapsed() ? '32' : '100'));
+  profilePicSize = computed(() => (this.menuCollapsed() ? "32" : "100"));
 }

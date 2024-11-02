@@ -1,1 +1,35 @@
-<p>NEW eventos works!</p>
+<h3>Eventos</h3>
+
+<section>
+  <form>
+    <input type="text" placeholder="Buscar por nombre" />
+    <button class="primary" type="button">Buscar</button>
+  </form>
+</section>
+
+<section class="results">
+  <!-- listing -->
+  @for (item of eventos; track item.id) {
+  <section class="listing">
+    <img class="listing-photo" [src]="item.imageUrl" alt="Evento" />
+    <div class="heading">
+      <h3 class="listing-heading">{{ item.name }}</h3>
+      <div style="padding: 10px 20px">
+        @for (cat of item.categories; track cat.id) {
+        <mat-chip color="primary">{{ cat.name }}</mat-chip>
+        }
+      </div>
+    </div>
+    <p class="listing-item">{{ item.description }}</p>
+    <p class="listing-item">{{ item.location }}</p>
+    <p class="listing-item">{{ item.currency }} {{ item.price }}</p>
+    <p class="listing-item">{{ formatDates(item.dates) }}</p>
+    <div class="listing-item-footer">
+      <a class="primary" [routerLink]="['/evento', item.id]">Ver Detalles</a>
+      <a class="secondary" [href]="item.url" target="_blank">
+        Ver Sitio Original
+      </a>
+    </div>
+  </section>
+  }
+</section>

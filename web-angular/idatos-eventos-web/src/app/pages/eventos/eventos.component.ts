@@ -1,15 +1,23 @@
-import { Component, inject } from '@angular/core';
-import { RouterLink, RouterOutlet } from '@angular/router';
-import { get } from 'http';
-import { Evento } from 'src/app/models/evento';
-import { EventosService } from 'src/app/services/eventos/eventos.service';
+import { Component, inject } from "@angular/core";
+import { RouterLink, RouterOutlet } from "@angular/router";
+import { Evento } from "src/app/models/evento";
+import { EventosService } from "src/app/services/eventos/eventos.service";
+import { EventoItemComponent } from "./components/evento-item/evento-item.component";
+import { CommonModule } from "@angular/common";
+import { MatChipsModule } from "@angular/material/chips";
 
 @Component({
-  selector: 'app-eventos',
+  selector: "app-eventos",
   standalone: true,
-  imports: [RouterLink, RouterOutlet],
-  templateUrl: './eventos.component.html',
-  styleUrl: './eventos.component.css',
+  imports: [
+    CommonModule,
+    RouterLink,
+    RouterOutlet,
+    EventoItemComponent,
+    MatChipsModule,
+  ],
+  templateUrl: "./eventos.component.html",
+  styleUrl: "./eventos.component.css",
 })
 export class EventosComponent {
   // Eventos Service
@@ -22,13 +30,18 @@ export class EventosComponent {
   }
 
   getEventos() {
-    this.eventosService.getEventos().subscribe({
+    this.eventosService.getEventosTest().subscribe({
       next: (eventos) => {
         this.eventos = eventos;
+        console.log("eventos api works ::", eventos);
       },
       error: (error) => {
         console.error(error);
       },
     });
+  }
+
+  formatDates(dates: string[]): string {
+    return this.eventosService.formatDates(dates);
   }
 }

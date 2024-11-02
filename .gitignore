@@ -10,3 +10,28 @@ Backend/aspnet-core/*/obj
 Backend/aspnet-core/*/.vs
 Backend/aspnet-core/*/bin
 Backend/aspnet-core/*/obj
+# Ignore node_modules directory
+web-angular/idatos-eventos-web/node_modules
+
+# Ignore Angular build output
+web-angular/idatos-eventos-web/dist
+web-angular/idatos-eventos-web/tmp
+
+# Ignore IDE specific files
+.vscode/
+.idea/
+
+# Ignore log files
+*.log
+
+# Ignore temporary files
+*.tmp
+*.temp
+
+# Ignore coverage directory
+web-angular/idatos-eventos-web/coverage
+
+# Ignore npm debug files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
