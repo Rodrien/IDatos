@@ -27,9 +27,9 @@ namespace Fing.Idatos.CoordinadorEventos.Application
             return @event;
         }
 
-        public async Task<List<Event>> GetEventsAsync()
+        public async Task<List<Event>> GetEventsAsync(string searchTerm, string categoryName)
         {
-            var events = await _eventRepository.GetAsync();
+            var events = await _eventRepository.GetAsync(searchTerm, categoryName);
 
             return events;
         }
