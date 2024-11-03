@@ -43,8 +43,8 @@ public class EventRepository : CoordinadorEventosRepository, IEventRepository
     {
         var entitys = await _context.Events
             .Include(e => e.Categories)
-            .Where(e => string.IsNullOrEmpty(searchTerm) || e.Name.Contains(searchTerm))
-            .Where(e => string.IsNullOrEmpty(categoryName) || e.Categories.Any(c => c.Name == categoryName))
+            .Where(e => string.IsNullOrEmpty(searchTerm) || e.Name.ToLower().Contains(searchTerm.ToLower()))
+            .Where(e => string.IsNullOrEmpty(categoryName) || e.Categories.Any(c => c.Name.ToLower() == categoryName.ToLower()))
             .ToListAsync();
 
         return entitys;
