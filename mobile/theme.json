@@ -1,9 +1,0 @@
-{
-    "backgroundColor": "#F5F3F3",
-    "gradientColors": ["#B80101", "red", "#FF5A40"],
-    "primaryColor": "black",
-    "primaryTextColor": "#1E1E1E",
-    "iconColor": "#545454",
-    "activeIconColor": "red",
-    "menuIconSize": 24
-}
